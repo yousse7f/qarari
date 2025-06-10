@@ -1,3 +1,5 @@
+// مسار الملف: app/(tabs)/_layout.tsx
+
 import { Tabs } from 'expo-router';
 import { useTheme } from '@/context/ThemeContext';
 import { useLanguage } from '@/context/LanguageContext';
@@ -29,14 +31,16 @@ export default function TabLayout() {
           direction: isRTL ? 'rtl' : 'ltr'
         },
         tabBarLabelStyle: {
-          fontFamily: 'Inter-Medium',
+          // --- التغيير الأول هنا ---
+          fontFamily: 'Cairo-Medium', // تم استبدال 'Inter-Medium'
           fontSize: 12,
         },
         headerStyle: {
           backgroundColor: theme.colors.background,
         },
         headerTitleStyle: {
-          fontFamily: 'Inter-Bold',
+          // --- التغيير الثاني هنا ---
+          fontFamily: 'Cairo-Bold', // تم استبدال 'Inter-Bold'
           color: theme.colors.text,
           textAlign: isRTL ? 'right' : 'left'
         },
@@ -46,7 +50,8 @@ export default function TabLayout() {
         options={{
           title: t('home'),
           tabBarIcon: ({ color }) => <Home color={color} size={24} />,
-          headerTitle: 'PickWise',
+          // يمكنك تغيير الخط هنا أيضًا إذا أردت، لكن headerTitleStyle هو الذي يطبق النمط العام
+          headerTitle: 'قراري', 
         }}
         listeners={{
           tabPress: handlePress,

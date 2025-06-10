@@ -64,7 +64,7 @@ export default function EditScreen() {
   };
 
   const addCriterion = () => {
-    setCriteria([...criteria, { id: `criterion-${Date.now()}`, name: '', weight: 1 }]);
+    setCriteria([...criteria, { id: `criterion-${Date.now()}`, name: '' }]);
   };
 
   const updateOption = (id: string, name: string) => {
@@ -369,7 +369,7 @@ export default function EditScreen() {
           {criteria.map(criterion => (
             <View key={criterion.id} style={styles.ratingSection}>
               <Text style={[styles.criterionTitle, { color: theme.colors.text }]}>
-                {criterion.name} {criterion.weight > 1 ? `(${criterion.weight}x)` : ''}
+                {criterion.name}
               </Text>
               
               {options.map(option => (

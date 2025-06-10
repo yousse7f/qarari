@@ -1,46 +1,16 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Switch, Pressable, ScrollView, Alert, Linking } from 'react-native';
+import { View, Text, StyleSheet, Switch, Pressable, ScrollView } from 'react-native';
 import { useTheme } from '@/context/ThemeContext';
 import { useLanguage } from '@/context/LanguageContext';
-import { Moon, Sun, Info, TriangleAlert as AlertTriangle } from 'lucide-react-native';
-import { clearAllDecisions } from '@/utils/storage';
-import { useRouter } from 'expo-router';
+import { Moon, Sun, Info } from 'lucide-react-native';
 import InfoModal from '@/components/InfoModal';
 
 export default function SettingsScreen() {
   const { theme, isDark, toggleTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
-  const router = useRouter();
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
   
-  const handleClearData = () => {
-    Alert.alert(
-      t('clearDataTitle'),
-      t('clearDataConfirm'),
-      [
-        { text: t('cancel'), style: 'cancel' },
-        { 
-          text: t('delete'), 
-          style: 'destructive',
-          onPress: async () => {
-            try {
-              await clearAllDecisions();
-              Alert.alert(t('success'), t('dataCleared'));
-              // Navigate back to home after clearing data
-              Alert.alert(t('success'), t('dataCleared'));
-              // Navigate back to home after clearing data
-              router.replace('/');
-            } catch (error) {
-              console.error('Error clearing data:', error);
-              Alert.alert(t('error'), t('errorClearingData'));
-            }
-          }
-        },
-      ]
-    );
-  };
-
   return (
     <ScrollView 
       style={[styles.container, { backgroundColor: theme.colors.background }]}
@@ -107,31 +77,6 @@ export default function SettingsScreen() {
             )}
           </Pressable>
         </View>
-      </View>
-
-      <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{t('dataManagement')}</Text>
-        <Pressable
-          onPress={handleClearData}
-          style={({ pressed }) => [
-            styles.settingItem, 
-            { 
-              backgroundColor: theme.colors.card, 
-              borderColor: theme.colors.border,
-              opacity: pressed ? 0.7 : 1
-            }
-          ]}
-        >
-          <View style={styles.settingContent}>
-            <View style={styles.settingLabelContainer}>
-              <AlertTriangle size={20} color={theme.colors.error} />
-              <Text style={[styles.settingLabel, { color: theme.colors.error }]}>{t('clearData')}</Text>
-            </View>
-          </View>
-        </Pressable>
-        <Text style={[styles.settingDescription, { color: theme.colors.textSecondary }]}>
-          {t('clearDataDesc')}
-        </Text>
       </View>
 
       <View style={styles.section}>
@@ -272,12 +217,6 @@ const styles = StyleSheet.create({
     width: 8,
     height: 8,
     borderRadius: 4,
-  },
-  settingDescription: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 12,
-    marginTop: 4,
-    marginLeft: 8,
   },
   footer: {
     marginTop: 40,

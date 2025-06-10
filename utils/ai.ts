@@ -1,17 +1,20 @@
 import { Decision } from '@/types/decisions';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// Initialize the Gemini API with your API key
-const API_KEY = 'AIzaSyCHa_sIECy4voO-';
+// Initialize the Gemini API with environment variable
+const API_KEY = process.env.EXPO_PUBLIC_GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(API_KEY);
 
 export async function generateAIInsights(decision: Decision): Promise<string> {
+  if (!API_KEY) {
+    throw new Error('Gemini API key is not configured. Please check your environment variables.');
+  }
+  
   try {
     // Create a clean representation of the decision data for the AI
     const optionsInfo = decision.options.map(option => {
       const scores = decision.criteria.map(criterion => ({
         criterion: criterion.name,
-        weight: criterion.weight,
         rating: option.ratings[criterion.id] || 0
       }));
       

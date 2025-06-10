@@ -12,7 +12,7 @@ import { formatDate } from '@/utils/helpers';
 import Button from '@/components/Button';
 import { ArrowLeft, Share2, Copy, Check } from 'lucide-react-native';
 import { generateAIInsights } from '@/utils/ai';
-import PrintButton from '@/components/PrintButton';
+// import PrintButton from '@/components/PrintButton';
 
 export default function ResultScreen() {
   const { theme } = useTheme();
@@ -270,9 +270,9 @@ export default function ResultScreen() {
           )}
         </View>
 
-        <View style={styles.buttonContainer}>
+        {/* <View style={styles.buttonContainer}>
           <PrintButton decisionData={decision} />
-        </View>
+        </View> */}
 
         <View style={styles.actionsContainer}>
           <Button
@@ -424,12 +424,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1
   },
-  insightsHeader: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    gap: 12
-  },
+  // insightsHeader: {
+  //   flexDirection: 'row',
+  //   alignItems: 'flex-start',
+  //   justifyContent: 'space-between',
+  //   gap: 12
+  // },
   insights: {
     fontFamily: 'Inter-Regular',
     fontSize: 14,

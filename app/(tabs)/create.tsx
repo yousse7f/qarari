@@ -384,7 +384,7 @@ export default function CreateScreen() {
         {validCriteria.map(criterion => (
           <View key={criterion.id} style={styles.ratingSection}>
             <Text style={[styles.criterionTitle, { color: theme.colors.text }]}>
-              {criterion.name} {criterion.weight > 1 ? `(${criterion.weight}x)` : ''}
+              {criterion.name}
             </Text>
             
             {validOptions.map(option => (

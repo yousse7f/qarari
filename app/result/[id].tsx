@@ -12,6 +12,7 @@ import { formatDate } from '@/utils/helpers';
 import Button from '@/components/Button';
 import { ArrowLeft, Share2, Copy, Check } from 'lucide-react-native';
 import { generateAIInsights } from '@/utils/ai';
+import PrintButton from '@/components/PrintButton';
 
 export default function ResultScreen() {
   const { theme } = useTheme();
@@ -19,7 +20,7 @@ export default function ResultScreen() {
   const { t } = useLanguage();
   const insets = useSafeAreaInsets();
   const { id } = useLocalSearchParams<{ id: string }>();
-  
+
   const [decision, setDecision] = useState<Decision | null>(null);
   const [loading, setLoading] = useState(true);
   const [insights, setInsights] = useState<string>('');
@@ -28,7 +29,7 @@ export default function ResultScreen() {
 
   const handleCopyInsights = async () => {
     if (!insights) return;
-    
+
     await Clipboard.setString(insights);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -62,11 +63,11 @@ export default function ResultScreen() {
 
   const handleShare = async () => {
     if (!decision) return;
-    
+
     try {
       const winningOption = decision.results.optionScores[0].option.name;
       const message = `${t('shareMessage').replace('{title}', decision.title).replace('{result}', winningOption)}`;
-      
+
       await Share.share({
         message,
         title: t('shareTitle'),
@@ -78,7 +79,7 @@ export default function ResultScreen() {
 
   const handleGenerateInsights = async () => {
     if (!decision) return;
-    
+
     try {
       setLoadingInsights(true);
       const result = await generateAIInsights(decision);
@@ -93,17 +94,17 @@ export default function ResultScreen() {
 
   const getWinnerMessage = () => {
     if (!decision || !decision.results.optionScores.length) return '';
-    
+
     const winner = decision.results.optionScores[0];
     const runnerUp = decision.results.optionScores[1];
-    
+
     if (!runnerUp) {
       return t('clearChoice').replace('{option}', winner.option.name);
     }
-    
+
     const scoreDifference = (winner.score - runnerUp.score).toFixed(1);
     const percentageDifference = (((winner.score - runnerUp.score) / runnerUp.score) * 100).toFixed(0);
-    
+
     if (winner.score - runnerUp.score < 0.5) {
       return t('narrowMargin').replace('{option}', winner.option.name);
     } else if (winner.score - runnerUp.score < 2) {
@@ -155,7 +156,7 @@ export default function ResultScreen() {
           <Share2 size={20} color={theme.colors.text} />
         </Pressable>
       </View>
-      
+
       <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewContent}>
         <View style={styles.titleContainer}>
           <Text style={[styles.title, { color: theme.colors.text }]}>{decision.title}</Text>
@@ -177,25 +178,25 @@ export default function ResultScreen() {
           <Text style={styles.winnerMessage}>{getWinnerMessage()}</Text>
           <View style={styles.scoreContainer}>
             {decision.results.optionScores.slice(0, 3).map((result, index) => (
-              <View 
-                key={result.option.id} 
+              <View
+                key={result.option.id}
                 style={[
-                  styles.placementBadge, 
+                  styles.placementBadge,
                   { backgroundColor: index === 0 ? theme.colors.successLight : theme.colors.background }
                 ]}
               >
-                <Text 
+                <Text
                   style={[
-                    styles.placementText, 
+                    styles.placementText,
                     { color: index === 0 ? theme.colors.success : theme.colors.primary }
                   ]}
                 >
                   {t(`place${index + 1}`)}
                 </Text>
-                <Text 
+                <Text
                   style={[
-                    styles.placementOption, 
-                    { 
+                    styles.placementOption,
+                    {
                       color: index === 0 ? theme.colors.success : theme.colors.primary,
                       fontFamily: index === 0 ? 'Inter-Bold' : 'Inter-Medium',
                     }
@@ -203,9 +204,9 @@ export default function ResultScreen() {
                 >
                   {result.option.name}
                 </Text>
-                <Text 
+                <Text
                   style={[
-                    styles.placementScore, 
+                    styles.placementScore,
                     { color: index === 0 ? theme.colors.success : theme.colors.primary }
                   ]}
                 >
@@ -215,25 +216,25 @@ export default function ResultScreen() {
             ))}
           </View>
         </View>
-        
+
         <View style={styles.tableContainer}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{t('detailedBreakdown')}</Text>
           <ResultsTable decision={decision} />
         </View>
-        
+
         <View style={styles.insightsContainer}>
           <View style={styles.insightsHeader}>
             <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{t('aiInsights')}</Text>
             {!insights && !loadingInsights && (
-              <Button 
+              <Button
                 title={t('generateInsights')}
-                onPress={handleGenerateInsights} 
+                onPress={handleGenerateInsights}
                 variant="outline"
                 style={{ alignSelf: 'flex-start' }}
               />
             )}
           </View>
-          
+
           {loadingInsights ? (
             <View style={[styles.insightsLoading, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
               <ActivityIndicator color={theme.colors.primary} />
@@ -268,15 +269,19 @@ export default function ResultScreen() {
             </View>
           )}
         </View>
-        
+
+        <View style={styles.buttonContainer}>
+          <PrintButton decisionData={decision} />
+        </View>
+
         <View style={styles.actionsContainer}>
-          <Button 
+          <Button
             title={t('editDecision')}
-            onPress={() => router.push(`/edit/${decision.id}`)} 
+            onPress={() => router.push(`/edit/${decision.id}`)}
             variant="outline"
             style={{ marginRight: 8, flex: 1 }}
           />
-          <Button 
+          <Button
             title={t('newDecision')}
             onPress={() => router.push('/create')}
             style={{ flex: 1 }}
@@ -461,4 +466,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+
+
+
 });

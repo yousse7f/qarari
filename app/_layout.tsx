@@ -1,27 +1,51 @@
+// مسار الملف: app/_layout.tsx
+
 import { useEffect } from 'react';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useFonts, Inter_400Regular, Inter_500Medium, Inter_700Bold } from '@expo-google-fonts/inter';
-import { useFrameworkReady } from '@/hooks/useFrameworkReady';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { ActivityIndicator, StyleSheet, View } from 'react-native';
+import { ActivityIndicator, StyleSheet, View, I18nManager } from 'react-native';
 import { ThemeProvider } from '@/context/ThemeContext';
 import { LanguageProvider } from '@/context/LanguageContext';
-import { I18nManager } from 'react-native';
+import { useFrameworkReady } from '@/hooks/useFrameworkReady';
+
+// 1. نستورد useFonts من expo-font
+import { useFonts } from 'expo-font';
+
+// 2. نستورد كل أوزان خط Cairo التي نريدها من الحزمة الجديدة
+import {
+  Cairo_300Light,
+  Cairo_400Regular,
+  Cairo_500Medium,
+  Cairo_600SemiBold,
+  Cairo_700Bold,
+  Cairo_900Black,
+} from '@expo-google-fonts/cairo';
 
 export default function RootLayout() {
   useFrameworkReady();
-  
-  // Enable RTL layout for the entire app
-  I18nManager.allowRTL(true);
-  I18nManager.forceRTL(false); // Let the LanguageContext handle RTL
 
+  // هذا الجزء يبقى كما هو
+  I18nManager.allowRTL(true);
+  I18nManager.forceRTL(false);
+
+  // 3. نقوم بتحميل الخطوط الجديدة هنا
   const [fontsLoaded] = useFonts({
-    'Inter-Regular': Inter_400Regular,
-    'Inter-Medium': Inter_500Medium,
-    'Inter-Bold': Inter_700Bold,
+    // يمكنك الاحتفاظ بخط Inter إذا كنت لا تزال تحتاجه في مكان ما
+    // 'Inter-Regular': Inter_400Regular,
+    // 'Inter-Medium': Inter_500Medium,
+    // 'Inter-Bold': Inter_700Bold,
+
+    // إضافة خطوط Cairo بأسماء سهلة الاستخدام
+    'Cairo-Light': Cairo_300Light,
+    'Cairo-Regular': Cairo_400Regular,
+    'Cairo-Medium': Cairo_500Medium,
+    'Cairo-SemiBold': Cairo_600SemiBold,
+    'Cairo-Bold': Cairo_700Bold,
+    'Cairo-Black': Cairo_900Black,
   });
 
+  // شاشة التحميل تبقى كما هي
   if (!fontsLoaded) {
     return (
       <View style={styles.loadingContainer}>
@@ -30,6 +54,7 @@ export default function RootLayout() {
     );
   }
 
+  // باقي الكود يبقى كما هو تمامًا
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
       <ThemeProvider>

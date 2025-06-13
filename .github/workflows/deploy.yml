@@ -33,9 +33,13 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         run: npm install
+      
+      # -->>  هذه هي الخطوة المعدلة بشكل صحيح <<--
       - name: Build
-        # This command assumes app.json already has "baseUrl": "/qarari/"
+        env:
+          EXPO_PUBLIC_URL: /qarari
         run: npx expo export
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

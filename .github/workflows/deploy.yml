@@ -5,6 +5,13 @@ on:
     branches:
       - main # أو اسم الفرع الرئيسي لديك
 
+# -->> أضف هذا القسم بالكامل <<--
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+# -->> نهاية القسم المضاف <<--
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest

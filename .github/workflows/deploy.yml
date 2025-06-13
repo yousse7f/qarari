@@ -1,0 +1,39 @@
+name: Deploy Expo Web to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # أو اسم الفرع الرئيسي لديك
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18' # يمكنك استخدام 16 أو 18
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Configure app.json for deployment
+        # هذا السطر مهم جداً
+        run: |
+          sed -i 's|\("web": {\)|\1 "baseUrl": "/qarari/",|' app.json
+
+      - name: Build web application
+        run: npx expo export
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: 'dist' # المجلد الذي يحتوي على موقعك
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1

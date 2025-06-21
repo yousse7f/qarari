@@ -187,7 +187,7 @@ const translations = {
     decisionNotFound: 'لم يتم العثور على القرار',
     goBack: 'رجوع',
     clearChoice: '{option} هو خيارك الواضح',
-    narrowMargin: '{option} يفوز بفارق ضئيل',
+    narrowMargin: '{option} يعادل باقي الخيارات ',
     betterBy: '{option} أفضل بـ {points} نقطة ({percent}٪)',
     decisivelyBetter: '{option} أفضل بشكل حاسم بـ {points} نقطة',
     place1: 'الأول',

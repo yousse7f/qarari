@@ -92,7 +92,7 @@ export default function SettingsScreen() {
               <Info size={20} color={theme.colors.text} />
               <Text style={[styles.settingLabel, { color: theme.colors.text }]}>{t('version')}</Text>
             </View>
-            <Text style={[styles.settingValue, { color: theme.colors.textSecondary }]}>1.0.0</Text>
+            <Text style={[styles.settingValue, { color: theme.colors.textSecondary }]}>1.0.1</Text>
           </View>
         </View>
 

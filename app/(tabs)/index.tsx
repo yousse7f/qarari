@@ -176,14 +176,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.4)',
   },
   heroTitle: {
-    fontFamily: 'Inter-Bold',
-    fontSize: 28,
+    fontFamily: 'cairo-Bold',
+    fontSize: 20,
     marginBottom: 4,
     color: '#FFFFFF',
   },
   heroSubtitle: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 16,
+    fontFamily: 'cairo-Regular',
+    fontSize: 14,
     opacity: 0.9,
     color: '#FFFFFF',
   },
@@ -207,12 +207,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   createButtonTitle: {
-    fontFamily: 'Inter-Bold',
+    fontFamily: 'cairo-Bold',
     fontSize: 18,
   },
   createButtonSubtitle: {
-    fontFamily: 'Inter-Regular',
-    fontSize: 14,
+    fontFamily: 'cairo-Regular',
+    fontSize: 12,
     marginTop: 4,
   },
   arrowContainer: {

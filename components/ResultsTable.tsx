@@ -14,29 +14,21 @@ const ResultsTable = ({ decision }: ResultsTableProps) => {
   const { theme } = useTheme();
   const { width: windowWidth } = useWindowDimensions();
   const { options, criteria, results } = decision;
-  
+
   // Filter out any empty options or criteria
   const validOptions = options.filter(option => option.name.trim() !== '');
   const validCriteria = criteria.filter(criterion => criterion.name.trim() !== '');
-  
+
   // Calculate cell width to fill screen
   const totalColumns = validOptions.length + 1; // +1 for criteria column
   const cellWidth = Math.max(MIN_CELL_WIDTH, (windowWidth - 32) / totalColumns);
-  
+
   return (
     <View style={[styles.container, { width: windowWidth - 32, borderColor: theme.colors.border }]}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         <View style={{ width: cellWidth * totalColumns }}>
           {/* Header Row */}
           <View style={[styles.headerRow, { borderColor: theme.colors.border }]}>
-            <View style={[
-              styles.headerCell,
-              { borderColor: theme.colors.border, width: cellWidth }
-            ]}>
-              <Text style={[styles.headerText, { color: theme.colors.textSecondary }]}>
-                Criteria
-              </Text>
-            </View>
             {validOptions.map(option => (
               <View
                 key={option.id}
@@ -45,27 +37,26 @@ const ResultsTable = ({ decision }: ResultsTableProps) => {
                   { borderColor: theme.colors.border, width: cellWidth }
                 ]}
               >
-                <Text 
-                  style={[styles.headerText, { color: theme.colors.text }]} 
+                <Text
+                  style={[styles.headerText, { color: theme.colors.text }]}
                   numberOfLines={1}
                 >
                   {option.name}
                 </Text>
               </View>
             ))}
+            <View style={[
+              styles.headerCell,
+              { borderColor: theme.colors.border, width: cellWidth }
+              ]}>
+              <Text style={[styles.headerText, { color: theme.colors.textSecondary }]}>
+                المعايير
+              </Text>
+            </View>
           </View>
-          
           {/* Criteria Rows */}
           {validCriteria.map(criterion => (
             <View key={criterion.id} style={[styles.dataRow, { borderColor: theme.colors.border }]}>
-              <View style={[
-                styles.labelCell,
-                { borderColor: theme.colors.border, width: cellWidth }
-              ]}>
-                <Text style={[styles.labelText, { color: theme.colors.text }]}>
-                  {criterion.name}
-                </Text>
-              </View>
               {validOptions.map(option => (
                 <View
                   key={option.id}
@@ -79,19 +70,18 @@ const ResultsTable = ({ decision }: ResultsTableProps) => {
                   </Text>
                 </View>
               ))}
+                            <View style={[
+                styles.labelCell,
+                { borderColor: theme.colors.border, width: cellWidth }
+              ]}>
+                <Text style={[styles.labelText, { color: theme.colors.text }]}>
+                  {criterion.name}
+                </Text>
+              </View>
             </View>
           ))}
-          
           {/* Total Row */}
-          <View style={[styles.totalRow, { backgroundColor: theme.colors.card }]}>
-            <View style={[
-              styles.labelCell,
-              { borderColor: theme.colors.border, width: cellWidth }
-            ]}>
-              <Text style={[styles.totalLabel, { color: theme.colors.text }]}>
-                Total
-              </Text>
-            </View>
+          <View style={[styles.totalRow, { backgroundColor: theme.colors.card }]}>   
             {results.optionScores.map(result => (
               <View
                 key={result.option.id}
@@ -108,6 +98,14 @@ const ResultsTable = ({ decision }: ResultsTableProps) => {
                 </Text>
               </View>
             ))}
+            <View style={[
+              styles.labelCell,
+              { borderColor: theme.colors.border, width: cellWidth }
+            ]}>
+              <Text style={[styles.totalLabel, { color: theme.colors.text }]}>
+                المجموع
+              </Text>
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -121,36 +119,43 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderRadius: 8,
     borderWidth: 1,
+    alignSelf: 'center',
   },
   headerRow: {
+    backgroundColor: '#1e293b',
     flexDirection: 'row',
     borderBottomWidth: 2,
   },
   headerCell: {
-    padding: 12,
+    padding: 10,
     borderRightWidth: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   headerText: {
-    fontFamily: 'Inter-Bold',
-    fontSize: 14,
+    textAlign: 'center',
+    fontFamily: 'cairo-Bold',
+    fontSize: 10,
   },
   dataRow: {
     flexDirection: 'row',
     borderBottomWidth: 1,
   },
   labelCell: {
-    padding: 12,
+    padding: 10,
     borderRightWidth: 1,
     justifyContent: 'center',
   },
   labelText: {
-    fontFamily: 'Inter-Medium',
-    fontSize: 14,
+    textAlign: 'center',
+    fontFamily: 'Cairo-Medium',
+    fontSize: 10,
   },
   dataCell: {
-    padding: 12,
+    padding: 10,
     borderRightWidth: 1,
     alignItems: 'center',
+
   },
   dataText: {
     fontFamily: 'Inter-Regular',
@@ -160,8 +165,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   totalLabel: {
-    fontFamily: 'Inter-Bold',
-    fontSize: 14,
+    textAlign: 'center',
+    fontFamily: 'Cairo-Medium',
+    fontSize: 10,
   },
   totalValue: {
     fontFamily: 'Inter-Bold',

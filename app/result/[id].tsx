@@ -272,7 +272,6 @@ export default function ResultScreen() {
 
       <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewContent}>
           <View style={{ backgroundColor: theme.colors.background, padding: 1 }}>
-
             <View style={styles.titleContainer}>
               <Text style={[styles.title, { color: theme.colors.text }]}>{decision.title}</Text>
               <Text style={[styles.date, { color: theme.colors.textSecondary }]}>{formatDate(decision.createdAt)}</Text>

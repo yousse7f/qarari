@@ -10,125 +10,6 @@ type LanguageContextType = {
 };
 
 const translations = {
-  en: {
-    // Common
-    cancel: 'Cancel',
-    save: 'Save',
-    edit: 'Edit',
-    delete: 'Delete',
-    back: 'Back',
-    continue: 'Continue',
-    loading: 'Loading...',
-    
-    // Navigation
-    home: 'Home',
-    create: 'Create',
-    history: 'History',
-    settings: 'Settings',
-    
-    // Home Screen
-    makeWiserChoices: 'Make Wiser Choices',
-    compareOptions: 'Compare options. Rate criteria. Decide confidently.',
-    startNewDecision: 'Start New Decision',
-    compareOptionsSubtitle: 'Compare options and make a choice',
-    recentDecisions: 'Recent Decisions',
-    viewAll: 'View All',
-    noRecentDecisions: 'No Recent Decisions',
-    startFirstDecision: 'Start your first decision-making process by clicking the button above.',
-    decisionTips: 'Decision Making Tips',
-    tip1: 'Define clear criteria that matter most to your decision',
-    tip2: 'Be honest with your ratings - don\'t let bias influence your choice',
-    tip3: 'Consider both objective factors and your emotional response',
-    
-    // Create/Edit Screen
-    defineDecision: 'Define Your Decision',
-    decisionTitle: 'Decision Title',
-    optional: 'Optional',
-    decisionTitlePlaceholder: 'e.g., Which job offer should I accept?',
-    description: 'Description',
-    descriptionPlaceholder: 'Add more details about your decision...',
-    optionsToCompare: 'Options to Compare',
-    addAtLeastTwo: 'Add at least 2 options',
-    addOption: 'Add Option',
-    option: 'Option',
-    defineCriteria: 'Define Your Criteria',
-    criteriaDescription: 'What factors are important in making this decision?',
-    addCriterion: 'Add Criterion',
-    criterionPlaceholder: 'Criterion (e.g., Salary, Location)',
-    rateOptions: 'Rate Your Options',
-    criteriaHint: 'Tip: Assign weights to criteria based on their importance to your decision',
-    ratingHint: 'Tip: Be honest with your ratings - don\'t let bias influence your choice',
-    rateDescription: 'Score each option from 1-10 for each criterion',
-    viewResults: 'View Results',
-    
-    // Results Screen
-    results: 'Results',
-    result: 'Result',
-    detailedBreakdown: 'Detailed Breakdown',
-    decisionNotFound: 'Decision not found',
-    goBack: 'Go Back',
-    clearChoice: '{option} is your clear choice',
-    narrowMargin: '{option} wins by a narrow margin',
-    betterBy: '{option} is better by {points} points ({percent}%)',
-    decisivelyBetter: '{option} is decisively better by {points} points',
-    place1: '1st',
-    place2: '2nd',
-    place3: '3rd',
-    shareMessage: 'I used qarari to help me decide on "{title}" and the result was: {result}!',
-    shareTitle: 'My qarari Decision',
-    aiInsights: 'AI Insights',
-    generateInsights: 'Generate Insights',
-    generatingInsights: 'Generating insights...',
-    insightsPlaceholder: 'Generate AI-powered insights based on your decision data to get a deeper understanding of your choices.',
-    copyInsights: 'Copy insights',
-    insightsCopied: 'Insights copied to clipboard',
-    editDecision: 'Edit Decision',
-    newDecision: 'New Decision',
-    
-    // Settings Screen
-    appearance: 'Appearance',
-    darkMode: 'Dark Mode',
-    language: 'Language',
-    english: 'English',
-    arabic: 'Arabic',
-    dataManagement: 'Data Management',
-    clearData: 'Clear All Data',
-    clearDataDesc: 'This will permanently delete all your saved decisions.',
-    clearDataTitle: 'Clear All Data',
-    clearDataConfirm: 'Are you sure you want to delete all your decision data? This cannot be undone.',
-    success: 'Success',
-    dataCleared: 'All decision data has been cleared',
-    error: 'Error',
-    errorClearingData: 'An error occurred while clearing data',
-    about: 'About',
-    version: 'Version',
-    decisionDetails: 'Decision Details',
-    saveChanges: 'Save Changes',
-    cannotRemove: 'Cannot Remove',
-    needOneOption: 'You need at least one option',
-    needOneCriterion: 'You need at least one criterion',
-    missingInformation: 'Missing Information',
-    enterTitle: 'Please enter a title for your decision',
-    enterTwoOptions: 'Please enter at least two options',
-    enterOneCriterion: 'Please enter at least one criterion',
-    incompleteRatings: 'Incomplete Ratings',
-    rateAllOptions: 'Please rate all options for each criterion',
-    errorLoadingDecision: 'An error occurred while loading the decision',
-    errorUpdatingDecision: 'An error occurred while updating your decision',
-    privacyPolicy: 'Privacy Policy',
-    termsOfService: 'Terms of Service',
-    copyright: '© 2025 qarari',
-    tagline: 'Make better decisions, together.',
-    privacyPolicyContent: 'At qarari, we take your privacy seriously. We only collect and store the data necessary for the app to function. Your decisions are stored locally on your device and are not shared with any third parties. We do not track your usage or collect any personal information beyond what\'s strictly necessary for the app to work.\n\nWe use industry-standard security measures to protect your data, but please note that no method of electronic storage is 100% secure. By using qarari, you acknowledge that you understand and agree to these terms.\n\nIf you have any questions about our privacy practices, please contact us.',
-    termsOfServiceContent: 'By using qarari, you agree to these Terms of Service. The app is provided \'as is\' without any warranties, express or implied. We reserve the right to modify or discontinue the service at any time.\n\nYou are responsible for all decisions made using the app. qarari is a tool to help you organize your thoughts and compare options, but the final decision is always yours. We are not liable for any consequences of decisions made using the app.\n\nYou agree not to use the app for any illegal purposes or in any way that could damage, disable, or impair the service. We reserve the right to terminate your access to the app if you violate these terms.',
-    
-    // History Screen
-    decisionHistory: 'Your Decision History',
-    noDecisionsFound: 'No Decisions Found',
-    noDecisionsDesc: 'You haven\'t made any decisions yet. Start by creating a new decision!',
-    tapToDelete: 'Tap on decisions to delete them',
-    done: 'Done',
-  },
   ar: {
     // Common
     cancel: 'إلغاء',
@@ -248,6 +129,126 @@ const translations = {
     tapToDelete: 'انقر على القرارات لحذفها',
     done: 'تم',
   },
+
+  en: {
+    // Common
+    cancel: 'Cancel',
+    save: 'Save',
+    edit: 'Edit',
+    delete: 'Delete',
+    back: 'Back',
+    continue: 'Continue',
+    loading: 'Loading...',
+    
+    // Navigation
+    home: 'Home',
+    create: 'Create',
+    history: 'History',
+    settings: 'Settings',
+    
+    // Home Screen
+    makeWiserChoices: 'Make Wiser Choices',
+    compareOptions: 'Compare options. Rate criteria. Decide confidently.',
+    startNewDecision: 'Start New Decision',
+    compareOptionsSubtitle: 'Compare options and make a choice',
+    recentDecisions: 'Recent Decisions',
+    viewAll: 'View All',
+    noRecentDecisions: 'No Recent Decisions',
+    startFirstDecision: 'Start your first decision-making process by clicking the button above.',
+    decisionTips: 'Decision Making Tips',
+    tip1: 'Define clear criteria that matter most to your decision',
+    tip2: 'Be honest with your ratings - don\'t let bias influence your choice',
+    tip3: 'Consider both objective factors and your emotional response',
+    
+    // Create/Edit Screen
+    defineDecision: 'Define Your Decision',
+    decisionTitle: 'Decision Title',
+    optional: 'Optional',
+    decisionTitlePlaceholder: 'e.g., Which job offer should I accept?',
+    description: 'Description',
+    descriptionPlaceholder: 'Add more details about your decision...',
+    optionsToCompare: 'Options to Compare',
+    addAtLeastTwo: 'Add at least 2 options',
+    addOption: 'Add Option',
+    option: 'Option',
+    defineCriteria: 'Define Your Criteria',
+    criteriaDescription: 'What factors are important in making this decision?',
+    addCriterion: 'Add Criterion',
+    criterionPlaceholder: 'Criterion (e.g., Salary, Location)',
+    rateOptions: 'Rate Your Options',
+    criteriaHint: 'Tip: Assign weights to criteria based on their importance to your decision',
+    ratingHint: 'Tip: Be honest with your ratings - don\'t let bias influence your choice',
+    rateDescription: 'Score each option from 1-10 for each criterion',
+    viewResults: 'View Results',
+    
+    // Results Screen
+    results: 'Results',
+    result: 'Result',
+    detailedBreakdown: 'Detailed Breakdown',
+    decisionNotFound: 'Decision not found',
+    goBack: 'Go Back',
+    clearChoice: '{option} is your clear choice',
+    narrowMargin: '{option} wins by a narrow margin',
+    betterBy: '{option} is better by {points} points ({percent}%)',
+    decisivelyBetter: '{option} is decisively better by {points} points',
+    place1: '1st',
+    place2: '2nd',
+    place3: '3rd',
+    shareMessage: 'I used qarari to help me decide on "{title}" and the result was: {result}!',
+    shareTitle: 'My qarari Decision',
+    aiInsights: 'AI Insights',
+    generateInsights: 'Generate Insights',
+    generatingInsights: 'Generating insights...',
+    insightsPlaceholder: 'Generate AI-powered insights based on your decision data to get a deeper understanding of your choices.',
+    copyInsights: 'Copy insights',
+    insightsCopied: 'Insights copied to clipboard',
+    editDecision: 'Edit Decision',
+    newDecision: 'New Decision',
+    
+    // Settings Screen
+    appearance: 'Appearance',
+    darkMode: 'Dark Mode',
+    language: 'Language',
+    english: 'English',
+    arabic: 'Arabic',
+    dataManagement: 'Data Management',
+    clearData: 'Clear All Data',
+    clearDataDesc: 'This will permanently delete all your saved decisions.',
+    clearDataTitle: 'Clear All Data',
+    clearDataConfirm: 'Are you sure you want to delete all your decision data? This cannot be undone.',
+    success: 'Success',
+    dataCleared: 'All decision data has been cleared',
+    error: 'Error',
+    errorClearingData: 'An error occurred while clearing data',
+    about: 'About',
+    version: 'Version',
+    decisionDetails: 'Decision Details',
+    saveChanges: 'Save Changes',
+    cannotRemove: 'Cannot Remove',
+    needOneOption: 'You need at least one option',
+    needOneCriterion: 'You need at least one criterion',
+    missingInformation: 'Missing Information',
+    enterTitle: 'Please enter a title for your decision',
+    enterTwoOptions: 'Please enter at least two options',
+    enterOneCriterion: 'Please enter at least one criterion',
+    incompleteRatings: 'Incomplete Ratings',
+    rateAllOptions: 'Please rate all options for each criterion',
+    errorLoadingDecision: 'An error occurred while loading the decision',
+    errorUpdatingDecision: 'An error occurred while updating your decision',
+    privacyPolicy: 'Privacy Policy',
+    termsOfService: 'Terms of Service',
+    copyright: '© 2025 qarari',
+    tagline: 'Make better decisions, together.',
+    privacyPolicyContent: 'At qarari, we take your privacy seriously. We only collect and store the data necessary for the app to function. Your decisions are stored locally on your device and are not shared with any third parties. We do not track your usage or collect any personal information beyond what\'s strictly necessary for the app to work.\n\nWe use industry-standard security measures to protect your data, but please note that no method of electronic storage is 100% secure. By using qarari, you acknowledge that you understand and agree to these terms.\n\nIf you have any questions about our privacy practices, please contact us.',
+    termsOfServiceContent: 'By using qarari, you agree to these Terms of Service. The app is provided \'as is\' without any warranties, express or implied. We reserve the right to modify or discontinue the service at any time.\n\nYou are responsible for all decisions made using the app. qarari is a tool to help you organize your thoughts and compare options, but the final decision is always yours. We are not liable for any consequences of decisions made using the app.\n\nYou agree not to use the app for any illegal purposes or in any way that could damage, disable, or impair the service. We reserve the right to terminate your access to the app if you violate these terms.',
+    
+    // History Screen
+    decisionHistory: 'Your Decision History',
+    noDecisionsFound: 'No Decisions Found',
+    noDecisionsDesc: 'You haven\'t made any decisions yet. Start by creating a new decision!',
+    tapToDelete: 'Tap on decisions to delete them',
+    done: 'Done',
+  },
 };
 
 const LanguageContext = createContext<LanguageContextType>({
@@ -258,11 +259,14 @@ const LanguageContext = createContext<LanguageContextType>({
 });
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  // هذا هو التغيير الوحيد: القيمة الأولية أصبحت 'ar'
+  const [language, setLanguage] = useState<Language>('ar');
   const isRTL = language === 'ar';
 
   const t = (key: string): string => {
-    return translations[language][key as keyof typeof translations['en']] || key;
+    // الكود هنا كان يستخدم 'en' كنوع افتراضي، من الأفضل جعله أكثر مرونة
+    const langFile = translations[language];
+    return langFile[key as keyof typeof langFile] || key;
   };
 
   return (

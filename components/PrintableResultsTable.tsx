@@ -28,7 +28,7 @@ const PrintLayout = ({ decision }: { decision: Decision }) => {
     <View style={styles.printContainer}>
       {/* يمكنك إضافة عنوان هنا إذا أردت */}
       <Text style={[styles.printTitle, { color: theme.colors.text }]}>Decision Results</Text>
-      
+
       <View style={{ width: (validOptions.length + 1) * cellWidth, borderColor: theme.colors.border, borderWidth: 1 }}>
         {/* Header Row */}
         <View style={[styles.headerRow, { borderColor: theme.colors.border }]}>

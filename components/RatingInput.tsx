@@ -12,24 +12,24 @@ type RatingInputProps = {
 const RatingInput = ({ value, onChange, maxValue = 10 }: RatingInputProps) => {
   const { theme } = useTheme();
   const scale = useSharedValue(1);
-  
+
   const handlePressIn = (index: number) => {
     scale.value = withSpring(0.95, { damping: 15, stiffness: 300 });
   };
-  
+
   const handlePressOut = () => {
     scale.value = withSpring(1, { damping: 15, stiffness: 300 });
   };
-  
+
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ scale: scale.value }],
     };
   });
-  
+
   // Create array from 1 to maxValue
   const ratings = Array.from({ length: maxValue }, (_, i) => i + 1);
-  
+
   // For smaller screens, use pill slider style
   const RatingPills = () => (
     <View style={styles.pillsContainer}>
@@ -60,7 +60,7 @@ const RatingInput = ({ value, onChange, maxValue = 10 }: RatingInputProps) => {
       ))}
     </View>
   );
-  
+
   return (
     <Animated.View style={[styles.container, animatedStyle]}>
       <RatingPills />

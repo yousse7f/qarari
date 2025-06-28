@@ -12,15 +12,15 @@ type EmptyStateProps = {
   onAction?: () => void;
 };
 
-const EmptyState = ({ 
-  title, 
-  description, 
-  icon = 'clipboard', 
-  actionLabel, 
-  onAction 
+const EmptyState = ({
+  title,
+  description,
+  icon = 'clipboard',
+  actionLabel,
+  onAction
 }: EmptyStateProps) => {
   const { theme } = useTheme();
-  
+
   return (
     <View style={[
       styles.container,
@@ -29,15 +29,15 @@ const EmptyState = ({
       <View style={[styles.iconContainer, { backgroundColor: theme.colors.primaryLight }]}>
         <ClipboardList size={32} color={theme.colors.primary} />
       </View>
-      
+
       <Text style={[styles.title, { color: theme.colors.text }]}>
         {title}
       </Text>
-      
+
       <Text style={[styles.description, { color: theme.colors.textSecondary }]}>
         {description}
       </Text>
-      
+
       {actionLabel && onAction && (
         <View style={styles.actionContainer}>
           <Button

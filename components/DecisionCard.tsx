@@ -17,7 +17,7 @@ const DecisionCard = ({ decision, onPress, deleteMode = false }: DecisionCardPro
   const { theme } = useTheme();
   const router = useRouter();
   const scale = useSharedValue(1);
-  
+
   const handlePress = () => {
     if (onPress) {
       onPress();
@@ -25,24 +25,24 @@ const DecisionCard = ({ decision, onPress, deleteMode = false }: DecisionCardPro
       router.push(`/result/${decision.id}`);
     }
   };
-  
+
   const handlePressIn = () => {
     scale.value = withSpring(0.98, { damping: 15, stiffness: 300 });
   };
-  
+
   const handlePressOut = () => {
     scale.value = withSpring(1, { damping: 15, stiffness: 300 });
   };
-  
+
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ scale: scale.value }],
     };
   });
-  
+
   // Get the winning option with optional chaining to safely handle undefined results
   const winningOption = decision.results?.optionScores[0]?.option.name || 'No result';
-  
+
   return (
     <Animated.View style={animatedStyle}>
       <Pressable
@@ -68,7 +68,7 @@ const DecisionCard = ({ decision, onPress, deleteMode = false }: DecisionCardPro
               {formatDate(decision.createdAt)}
             </Text>
           </View>
-          
+
           <View style={styles.resultContainer}>
             <View>
               <Text style={[styles.resultLabel, { color: theme.colors.textSecondary }]}>
@@ -78,7 +78,7 @@ const DecisionCard = ({ decision, onPress, deleteMode = false }: DecisionCardPro
                 {winningOption}
               </Text>
             </View>
-            
+
             {deleteMode ? (
               <Trash2 size={20} color={theme.colors.error} />
             ) : (

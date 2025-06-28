@@ -21,13 +21,13 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
+
         tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: theme.colors.text,
         tabBarStyle: {
           backgroundColor: theme.colors.card,
           borderTopColor: theme.colors.border,
           height: 60,
-          paddingBottom: 6,
           direction: isRTL ? 'rtl' : 'ltr'
         },
         tabBarLabelStyle: {
@@ -38,11 +38,12 @@ export default function TabLayout() {
         headerStyle: {
           backgroundColor: theme.colors.background,
         },
+        headerTitleAlign: 'center',
         headerTitleStyle: {
           // --- التغيير الثاني هنا ---
           fontFamily: 'Cairo-Bold', // تم استبدال 'Inter-Bold'
           color: theme.colors.text,
-          textAlign: isRTL ? 'right' : 'left'
+          textAlign: isRTL ? 'right' : 'left',
         },
       }}>
       <Tabs.Screen
@@ -51,7 +52,7 @@ export default function TabLayout() {
           title: t('home'),
           tabBarIcon: ({ color }) => <Home color={color} size={24} />,
           // يمكنك تغيير الخط هنا أيضًا إذا أردت، لكن headerTitleStyle هو الذي يطبق النمط العام
-          headerTitle: 'قراري', 
+          headerTitle: 'قراري',
         }}
         listeners={{
           tabPress: handlePress,

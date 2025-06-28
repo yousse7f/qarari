@@ -40,7 +40,7 @@ const InfoModal = ({ visible, onClose, title, content }: InfoModalProps) => {
               <X size={24} color={theme.colors.text} />
             </Pressable>
           </View>
-          
+
           <ScrollView style={styles.content}>
             <Text style={[styles.contentText, { color: theme.colors.text }]}>
               {content}

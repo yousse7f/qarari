@@ -1,17 +1,17 @@
 import React from 'react';
-import { 
-  Pressable, 
-  Text, 
-  StyleSheet, 
-  ActivityIndicator, 
-  ViewStyle, 
-  TextStyle 
+import {
+  Pressable,
+  Text,
+  StyleSheet,
+  ActivityIndicator,
+  ViewStyle,
+  TextStyle
 } from 'react-native';
 import { useTheme } from '@/context/ThemeContext';
-import Animated, { 
-  useAnimatedStyle, 
-  useSharedValue, 
-  withSpring 
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring
 } from 'react-native-reanimated';
 
 type ButtonProps = {
@@ -26,10 +26,10 @@ type ButtonProps = {
   icon?: React.ReactNode;
 };
 
-const Button = ({ 
-  title, 
-  onPress, 
-  variant = 'primary', 
+const Button = ({
+  title,
+  onPress,
+  variant = 'primary',
   size = 'medium',
   isLoading = false,
   disabled = false,
@@ -39,21 +39,21 @@ const Button = ({
 }: ButtonProps) => {
   const { theme } = useTheme();
   const scale = useSharedValue(1);
-  
+
   const handlePressIn = () => {
     scale.value = withSpring(0.96, { damping: 15, stiffness: 300 });
   };
-  
+
   const handlePressOut = () => {
     scale.value = withSpring(1, { damping: 15, stiffness: 300 });
   };
-  
+
   const animatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ scale: scale.value }],
     };
   });
-  
+
   // Button styling based on variant
   const getButtonStyle = () => {
     switch (variant) {
@@ -75,7 +75,7 @@ const Button = ({
         };
     }
   };
-  
+
   // Text styling based on variant
   const getTextStyle = () => {
     switch (variant) {
@@ -91,7 +91,7 @@ const Button = ({
         };
     }
   };
-  
+
   // Size styling
   const getSizeStyle = () => {
     switch (size) {
@@ -113,7 +113,7 @@ const Button = ({
         };
     }
   };
-  
+
   // Text size
   const getTextSizeStyle = () => {
     switch (size) {
@@ -132,7 +132,7 @@ const Button = ({
         };
     }
   };
-  
+
   return (
     <Animated.View style={[animatedStyle, style]}>
       <Pressable
@@ -149,17 +149,17 @@ const Button = ({
         disabled={isLoading || disabled}
       >
         {isLoading ? (
-          <ActivityIndicator 
-            size="small" 
-            color={variant === 'primary' ? '#FFFFFF' : theme.colors.primary} 
+          <ActivityIndicator
+            size="small"
+            color={variant === 'primary' ? '#FFFFFF' : theme.colors.primary}
           />
         ) : (
           <>
             {icon && <Text style={styles.iconContainer}>{icon}</Text>}
-            <Text 
+            <Text
               style={[
-                styles.text, 
-                getTextStyle(), 
+                styles.text,
+                getTextStyle(),
                 getTextSizeStyle(),
                 textStyle
               ]}

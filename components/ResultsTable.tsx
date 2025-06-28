@@ -48,7 +48,7 @@ const ResultsTable = ({ decision }: ResultsTableProps) => {
             <View style={[
               styles.headerCell,
               { borderColor: theme.colors.border, width: cellWidth }
-              ]}>
+            ]}>
               <Text style={[styles.headerText, { color: theme.colors.textSecondary }]}>
                 المعايير
               </Text>
@@ -70,7 +70,7 @@ const ResultsTable = ({ decision }: ResultsTableProps) => {
                   </Text>
                 </View>
               ))}
-                            <View style={[
+              <View style={[
                 styles.labelCell,
                 { borderColor: theme.colors.border, width: cellWidth }
               ]}>
@@ -81,7 +81,7 @@ const ResultsTable = ({ decision }: ResultsTableProps) => {
             </View>
           ))}
           {/* Total Row */}
-          <View style={[styles.totalRow, { backgroundColor: theme.colors.card }]}>   
+          <View style={[styles.totalRow, { backgroundColor: theme.colors.card }]}>
             {results.optionScores.map(result => (
               <View
                 key={result.option.id}
@@ -122,7 +122,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   headerRow: {
-    backgroundColor: '#1e293b',
     flexDirection: 'row',
     borderBottomWidth: 2,
   },

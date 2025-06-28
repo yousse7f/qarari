@@ -214,7 +214,7 @@ export default function ResultScreen() {
       setInsights(result);
     } catch (error) {
       console.error('Error generating insights:', error);
-      setInsights('Sorry, we could not generate insights at this time. Please try again later.');
+      setInsights('نأسف لعدم توفر هذه الميزة في الوقت الحالي، شكرا لتفهمكم.');
     } finally {
       setLoadingInsights(false);
     }
@@ -271,63 +271,63 @@ export default function ResultScreen() {
       </View>
 
       <ScrollView style={styles.scrollView} contentContainerStyle={styles.scrollViewContent}>
-          <View style={{ backgroundColor: theme.colors.background, padding: 1 }}>
-            <View style={styles.titleContainer}>
-              <Text style={[styles.title, { color: theme.colors.text }]}>{decision.title}</Text>
-              <Text style={[styles.date, { color: theme.colors.textSecondary }]}>{formatDate(decision.createdAt)}</Text>
+        <View style={{ backgroundColor: theme.colors.background, padding: 1 }}>
+          <View style={styles.titleContainer}>
+            <Text style={[styles.title, { color: theme.colors.text }]}>{decision.title}</Text>
+            <Text style={[styles.date, { color: theme.colors.textSecondary }]}>{formatDate(decision.createdAt)}</Text>
+          </View>
+
+          {decision.description && (
+            <View style={[styles.descriptionContainer, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
+              <Text style={[styles.description, { color: theme.colors.text }]}>{decision.description}</Text>
             </View>
+          )}
 
-            {decision.description && (
-              <View style={[styles.descriptionContainer, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
-                <Text style={[styles.description, { color: theme.colors.text }]}>{decision.description}</Text>
-              </View>
-            )}
-
-            <View style={[styles.resultCard, { backgroundColor: theme.colors.primary }]}>
-              <Text style={styles.resultTitle}>{t('result')}</Text>
-              <Text style={styles.winnerMessage}>{getWinnerMessage()}</Text>
-              <View style={styles.scoreContainer}>
-                {decision.results.optionScores.slice(0, 3).map((result, index) => (
-                  <View key={result.option.id} style={[styles.placementBadge, { backgroundColor: index === 0 ? theme.colors.successLight : theme.colors.background }]}>
-                    <Text style={[styles.placementText, { color: index === 0 ? theme.colors.success : theme.colors.primary }]}>{t(`place${index + 1}`)}</Text>
-                    <Text style={[styles.placementOption, { color: index === 0 ? theme.colors.success : theme.colors.primary, fontFamily: index === 0 ? 'Inter-Bold' : 'Inter-Medium' }]}>{result.option.name}</Text>
-                    <Text style={[styles.placementScore, { color: index === 0 ? theme.colors.success : theme.colors.primary }]}>{result.score.toFixed(1)}</Text>
-                  </View>
-                ))}
-              </View>
-            </View>
-
-            <View style={styles.tableContainer}>
-              <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{t('detailedBreakdown')}</Text>
-              <ResultsTable decision={decision} />
-            </View>
-
-            <View style={styles.insightsContainer}>
-              <View style={styles.insightsHeader}>
-                <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{t('aiInsights')}</Text>
-                {!insights && !loadingInsights && (<Button title={t('generateInsights')} onPress={handleGenerateInsights} variant="outline" style={{ alignSelf: 'flex-start' }} />)}
-              </View>
-              {loadingInsights ? (
-                <View style={[styles.insightsLoading, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
-                  <ActivityIndicator color={theme.colors.primary} />
-                  <Text style={[styles.insightsLoadingText, { color: theme.colors.textSecondary }]}>{t('generatingInsights')}</Text>
+          <View style={[styles.resultCard, { backgroundColor: theme.colors.primary }]}>
+            <Text style={styles.resultTitle}>{t('result')}</Text>
+            <Text style={styles.winnerMessage}>{getWinnerMessage()}</Text>
+            <View style={styles.scoreContainer}>
+              {decision.results.optionScores.slice(0, 3).map((result, index) => (
+                <View key={result.option.id} style={[styles.placementBadge, { backgroundColor: index === 0 ? theme.colors.successLight : theme.colors.background }]}>
+                  <Text style={[styles.placementText, { color: index === 0 ? theme.colors.success : theme.colors.primary }]}>{t(`place${index + 1}`)}</Text>
+                  <Text style={[styles.placementOption, { color: index === 0 ? theme.colors.success : theme.colors.primary, fontFamily: index === 0 ? 'Inter-Bold' : 'Inter-Medium' }]}>{result.option.name}</Text>
+                  <Text style={[styles.placementScore, { color: index === 0 ? theme.colors.success : theme.colors.primary }]}>{result.score.toFixed(1)}</Text>
                 </View>
-              ) : insights ? (
-                <View style={[styles.insightsContent, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
-                  <View style={styles.insightsHeader}>
-                    <Text style={[styles.insights, { color: theme.colors.text }]}>{insights}</Text>
-                    <Pressable onPress={handleCopyInsights} style={({ pressed }) => [styles.copyButton, { opacity: pressed ? 0.7 : 1 }]}>
-                      {copied ? (<Check size={20} color={theme.colors.success} />) : (<Copy size={20} color={theme.colors.text} />)}
-                    </Pressable>
-                  </View>
-                </View>
-              ) : (
-                <View style={[styles.insightsPlaceholder, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
-                  <Text style={[styles.insightsPlaceholderText, { color: theme.colors.textSecondary }]}>{t('insightsPlaceholder')}</Text>
-                </View>
-              )}
+              ))}
             </View>
           </View>
+
+          <View style={styles.tableContainer}>
+            <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{t('detailedBreakdown')}</Text>
+            <ResultsTable decision={decision} />
+          </View>
+
+          <View style={styles.insightsContainer}>
+            <View style={styles.insightsHeader}>
+              <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{t('aiInsights')}</Text>
+              {!insights && !loadingInsights && (<Button title={t('generateInsights')} onPress={handleGenerateInsights} variant="outline" style={{ alignSelf: 'flex-start' }} />)}
+            </View>
+            {loadingInsights ? (
+              <View style={[styles.insightsLoading, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
+                <ActivityIndicator color={theme.colors.primary} />
+                <Text style={[styles.insightsLoadingText, { color: theme.colors.textSecondary }]}>{t('generatingInsights')}</Text>
+              </View>
+            ) : insights ? (
+              <View style={[styles.insightsContent, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
+                <View style={styles.insightsHeader}>
+                  <Text style={[styles.insights, { color: theme.colors.text }]}>{insights}</Text>
+                  <Pressable onPress={handleCopyInsights} style={({ pressed }) => [styles.copyButton, { opacity: pressed ? 0.7 : 1 }]}>
+                    {copied ? (<Check size={20} color={theme.colors.success} />) : (<Copy size={20} color={theme.colors.text} />)}
+                  </Pressable>
+                </View>
+              </View>
+            ) : (
+              <View style={[styles.insightsPlaceholder, { backgroundColor: theme.colors.card, borderColor: theme.colors.border }]}>
+                <Text style={[styles.insightsPlaceholderText, { color: theme.colors.textSecondary }]}>{t('insightsPlaceholder')}</Text>
+              </View>
+            )}
+          </View>
+        </View>
         <View style={styles.printButtonContainer}>
           <Button
             title={t('printReport', 'Print Report')}

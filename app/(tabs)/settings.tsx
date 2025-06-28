@@ -10,17 +10,17 @@ export default function SettingsScreen() {
   const { language, setLanguage, t } = useLanguage();
   const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false);
   const [showTerms, setShowTerms] = useState(false);
-  
+
   return (
-    <ScrollView 
+    <ScrollView
       style={[styles.container, { backgroundColor: theme.colors.background }]}
       contentContainerStyle={styles.contentContainer}
     >
       <View style={styles.section}>
         <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{t('appearance')}</Text>
-        <View 
+        <View
           style={[
-            styles.settingItem, 
+            styles.settingItem,
             { backgroundColor: theme.colors.card, borderColor: theme.colors.border }
           ]}
         >
@@ -37,11 +37,11 @@ export default function SettingsScreen() {
             />
           </View>
         </View>
-        
+
         <Text style={[styles.sectionTitle, { color: theme.colors.text, marginTop: 24 }]}>{t('language')}</Text>
-        <View 
+        <View
           style={[
-            styles.settingItem, 
+            styles.settingItem,
             { backgroundColor: theme.colors.card, borderColor: theme.colors.border }
           ]}
         >
@@ -59,9 +59,9 @@ export default function SettingsScreen() {
               <View style={[styles.activeDot, { backgroundColor: theme.colors.primary }]} />
             )}
           </Pressable>
-          
+
           <View style={[styles.languageDivider, { backgroundColor: theme.colors.border }]} />
-          
+
           <Pressable
             onPress={() => setLanguage('ar')}
             style={({ pressed }) => [
@@ -81,9 +81,9 @@ export default function SettingsScreen() {
 
       <View style={styles.section}>
         <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{t('about')}</Text>
-        <View 
+        <View
           style={[
-            styles.settingItem, 
+            styles.settingItem,
             { backgroundColor: theme.colors.card, borderColor: theme.colors.border }
           ]}
         >
@@ -99,9 +99,9 @@ export default function SettingsScreen() {
         <Pressable
           onPress={() => setShowPrivacyPolicy(true)}
           style={({ pressed }) => [
-            styles.settingItem, 
-            { 
-              backgroundColor: theme.colors.card, 
+            styles.settingItem,
+            {
+              backgroundColor: theme.colors.card,
               borderColor: theme.colors.border,
               opacity: pressed ? 0.7 : 1
             }
@@ -118,9 +118,9 @@ export default function SettingsScreen() {
         <Pressable
           onPress={() => setShowTerms(true)}
           style={({ pressed }) => [
-            styles.settingItem, 
-            { 
-              backgroundColor: theme.colors.card, 
+            styles.settingItem,
+            {
+              backgroundColor: theme.colors.card,
               borderColor: theme.colors.border,
               opacity: pressed ? 0.7 : 1,
               marginBottom: 0
@@ -144,14 +144,14 @@ export default function SettingsScreen() {
           {t('tagline')}
         </Text>
       </View>
-      
+
       <InfoModal
         visible={showPrivacyPolicy}
         onClose={() => setShowPrivacyPolicy(false)}
         title={t('privacyPolicy')}
         content={t('privacyPolicyContent')}
       />
-      
+
       <InfoModal
         visible={showTerms}
         onClose={() => setShowTerms(false)}

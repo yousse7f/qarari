@@ -15,7 +15,8 @@
       "bundler": "metro",
       "output": "single",
       "favicon": "./assets/images/favicon.png",
-      "baseUrl": "/qarari/"
+      "baseUrl": "/qarari/",
+      "lang": "ar"
     },
     "plugins": [
       "expo-router",

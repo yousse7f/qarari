@@ -330,7 +330,7 @@ export default function ResultScreen() {
         </View>
         <View style={styles.printButtonContainer}>
           <Button
-            title={t('printReport', 'Print Report')}
+            title={t('printReport')}
             onPress={handlePrint}
             variant="outline"
             icon={<Printer size={16} color={theme.colors.primary} />}

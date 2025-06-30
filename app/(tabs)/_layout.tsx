@@ -7,11 +7,13 @@ import { Chrome as Home, History, Settings, Plus } from 'lucide-react-native';
 import { Pressable, StyleSheet } from 'react-native';
 import * as Haptics from 'expo-haptics';
 import { Platform } from 'react-native';
+import { Image } from 'react-native';
+
 
 export default function TabLayout() {
   const { theme } = useTheme();
   const { t, isRTL } = useLanguage();
-
+  const logoImage = require('@/assets/images/v.png');
   const handlePress = () => {
     if (Platform.OS !== 'web') {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
@@ -53,6 +55,18 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => <Home color={color} size={24} />,
           // يمكنك تغيير الخط هنا أيضًا إذا أردت، لكن headerTitleStyle هو الذي يطبق النمط العام
           headerTitle: 'قراري',
+          headerRight: () => (
+            <Image
+              source={logoImage}
+              style={{
+                backgroundColor: '#02434e',
+                width: 50,
+                height: 50,
+                marginRight: 10,
+                borderRadius: 25,
+              }}
+            />
+          ),
         }}
         listeners={{
           tabPress: handlePress,

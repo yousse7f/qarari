@@ -19,13 +19,13 @@ const translations = {
     back: 'رجوع',
     continue: 'متابعة',
     loading: 'جاري التحميل...',
-    
+
     // Navigation
     home: 'الرئيسية',
     create: 'إنشاء',
     history: 'السجل',
     settings: 'الإعدادات',
-    
+
     // Home Screen
     makeWiserChoices: 'اتخذ قرارات أكثر حكمة',
     compareOptions: 'قارن الخيارات. قيم المعايير. قرر بثقة.',
@@ -39,7 +39,7 @@ const translations = {
     tip1: 'حدد معايير واضحة تهم قرارك',
     tip2: 'كن صادقاً في تقييماتك - لا تدع التحيز يؤثر على اختيارك',
     tip3: 'ضع في اعتبارك العوامل الموضوعية واستجابتك العاطفية',
-    
+
     // Create/Edit Screen
     defineDecision: 'حدد قرارك',
     decisionTitle: 'عنوان القرار',
@@ -60,7 +60,7 @@ const translations = {
     ratingHint: 'نصيحة: كن صادقاً في تقييماتك - لا تدع التحيز يؤثر على اختيارك',
     rateDescription: 'قيم كل خيار من 1-10 لكل معيار',
     viewResults: 'عرض النتائج',
-    
+
     // Results Screen
     results: 'النتائج',
     result: 'النتيجة',
@@ -74,7 +74,7 @@ const translations = {
     place1: 'الأول',
     place2: 'الثاني',
     place3: 'الثالث',
-    shareMessage: 'استخدمت قراري لمساعدتي في اتخاذ قرار "{title}" وكانت النتيجة: {result}!',
+    shareMessage: 'استخدمت قراري لمساعدتي في اتخاذ قرار "{title}" وكانت النتيجة: {result}! قم بتجربة التطبيق الآن https://coruscating-palmier-8d0016.netlify.app/',
     shareTitle: 'قراري في قراري ',
     aiInsights: 'تحليل الذكاء الاصطناعي',
     generateInsights: 'توليد التحليل',
@@ -84,7 +84,8 @@ const translations = {
     insightsCopied: 'تم نسخ التحليل إلى الحافظة',
     editDecision: 'تعديل القرار',
     newDecision: 'قرار جديد',
-    
+    printReport: 'طباعة التقرير',
+
     // Settings Screen
     appearance: 'المظهر',
     darkMode: 'الوضع الداكن',
@@ -121,7 +122,7 @@ const translations = {
     tagline: 'اتخذ قرارات أفضل، معاً.',
     privacyPolicyContent: 'في قراري، نأخذ خصوصيتك على محمل الجد. نحن نجمع ونخزن فقط البيانات الضرورية لعمل التطبيق. يتم تخزين قراراتك محليًا على جهازك ولا تتم مشاركتها مع أي طرف ثالث. نحن لا نتتبع استخدامك أو نجمع أي معلومات شخصية تتجاوز ما هو ضروري تمامًا لعمل التطبيق.\n\nنحن نستخدم إجراءات أمنية قياسية لحماية بياناتك، ولكن يرجى ملاحظة أنه لا توجد طريقة تخزين إلكترونية آمنة بنسبة 100٪. باستخدام قراري، فإنك تقر بأنك تفهم وتوافق على هذه الشروط.\n\nإذا كان لديك أي أسئلة حول ممارسات الخصوصية لدينا، يرجى الاتصال بنا.',
     termsOfServiceContent: 'باستخدام قراري، فإنك توافق على شروط الخدمة هذه. يتم تقديم التطبيق "كما هو" دون أي ضمانات، صريحة أو ضمنية. نحتفظ بالحق في تعديل أو إيقاف الخدمة في أي وقت.\n\nأنت مسؤول عن جميع القرارات التي تتخذها باستخدام التطبيق. قراري هو أداة لمساعدتك في تنظيم أفكارك ومقارنة الخيارات، لكن القرار النهائي هو دائمًا قرارك. نحن لسنا مسؤولين عن أي عواقب للقرارات المتخذة باستخدام التطبيق.\n\nأنت توافق على عدم استخدام التطبيق لأي أغراض غير قانونية أو بأي طريقة يمكن أن تضر أو تعطل أو تضعف الخدمة. نحتفظ بالحق في إنهاء وصولك إلى التطبيق إذا انتهكت هذه الشروط.',
-    
+
     // History Screen
     decisionHistory: 'سجل قراراتك',
     noDecisionsFound: 'لم يتم العثور على قرارات',
@@ -139,13 +140,13 @@ const translations = {
     back: 'Back',
     continue: 'Continue',
     loading: 'Loading...',
-    
+
     // Navigation
     home: 'Home',
     create: 'Create',
     history: 'History',
     settings: 'Settings',
-    
+
     // Home Screen
     makeWiserChoices: 'Make Wiser Choices',
     compareOptions: 'Compare options. Rate criteria. Decide confidently.',
@@ -159,7 +160,7 @@ const translations = {
     tip1: 'Define clear criteria that matter most to your decision',
     tip2: 'Be honest with your ratings - don\'t let bias influence your choice',
     tip3: 'Consider both objective factors and your emotional response',
-    
+
     // Create/Edit Screen
     defineDecision: 'Define Your Decision',
     decisionTitle: 'Decision Title',
@@ -180,7 +181,7 @@ const translations = {
     ratingHint: 'Tip: Be honest with your ratings - don\'t let bias influence your choice',
     rateDescription: 'Score each option from 1-10 for each criterion',
     viewResults: 'View Results',
-    
+
     // Results Screen
     results: 'Results',
     result: 'Result',
@@ -194,7 +195,7 @@ const translations = {
     place1: '1st',
     place2: '2nd',
     place3: '3rd',
-    shareMessage: 'I used qarari to help me decide on "{title}" and the result was: {result}!',
+    shareMessage: 'I used qarari to help me decide on "{title}" and the result was: {result}! Try the app now https://coruscating-palmier-8d0016.netlify.app/',
     shareTitle: 'My qarari Decision',
     aiInsights: 'AI Insights',
     generateInsights: 'Generate Insights',
@@ -204,7 +205,8 @@ const translations = {
     insightsCopied: 'Insights copied to clipboard',
     editDecision: 'Edit Decision',
     newDecision: 'New Decision',
-    
+    printReport: 'Print Report',
+
     // Settings Screen
     appearance: 'Appearance',
     darkMode: 'Dark Mode',
@@ -241,7 +243,7 @@ const translations = {
     tagline: 'Make better decisions, together.',
     privacyPolicyContent: 'At qarari, we take your privacy seriously. We only collect and store the data necessary for the app to function. Your decisions are stored locally on your device and are not shared with any third parties. We do not track your usage or collect any personal information beyond what\'s strictly necessary for the app to work.\n\nWe use industry-standard security measures to protect your data, but please note that no method of electronic storage is 100% secure. By using qarari, you acknowledge that you understand and agree to these terms.\n\nIf you have any questions about our privacy practices, please contact us.',
     termsOfServiceContent: 'By using qarari, you agree to these Terms of Service. The app is provided \'as is\' without any warranties, express or implied. We reserve the right to modify or discontinue the service at any time.\n\nYou are responsible for all decisions made using the app. qarari is a tool to help you organize your thoughts and compare options, but the final decision is always yours. We are not liable for any consequences of decisions made using the app.\n\nYou agree not to use the app for any illegal purposes or in any way that could damage, disable, or impair the service. We reserve the right to terminate your access to the app if you violate these terms.',
-    
+
     // History Screen
     decisionHistory: 'Your Decision History',
     noDecisionsFound: 'No Decisions Found',
@@ -253,7 +255,7 @@ const translations = {
 
 const LanguageContext = createContext<LanguageContextType>({
   language: 'en',
-  setLanguage: () => {},
+  setLanguage: () => { },
   isRTL: false,
   t: (key: string) => key,
 });

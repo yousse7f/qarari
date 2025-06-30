@@ -45,13 +45,15 @@ export default function HomeScreen() {
   };
 
   return (
-    <ScrollView 
+    <ScrollView
       style={[styles.container, { backgroundColor: theme.colors.background }]}
       contentContainerStyle={styles.contentContainer}
     >
       <View style={styles.heroContainer}>
-        <Image 
-          source={{ uri: 'https://images.pexels.com/photos/6980885/pexels-photo-6980885.jpeg' }} 
+        <Image
+          source={{ uri: 'https://images.pexels.com/photos/6980885/pexels-photo-6980885.jpeg' }}
+          // or Take this
+          // source={require('@/assets/images/v.png')}
           style={styles.heroImage}
         />
         <View style={styles.heroContent}>
@@ -64,10 +66,10 @@ export default function HomeScreen() {
         </View>
       </View>
 
-      <Animated.View 
+      <Animated.View
         style={[
-          styles.createButtonContainer, 
-          { 
+          styles.createButtonContainer,
+          {
             backgroundColor: theme.colors.card,
             borderColor: theme.colors.border,
             transform: [{ scale: buttonAnim }]
@@ -110,7 +112,7 @@ export default function HomeScreen() {
             </Pressable>
           )}
         </View>
-        
+
         {recentDecisions.length > 0 ? (
           <View style={styles.decisionsList}>
             {recentDecisions.slice(0, 3).map(decision => (
@@ -118,7 +120,7 @@ export default function HomeScreen() {
             ))}
           </View>
         ) : (
-          <EmptyState 
+          <EmptyState
             title={t('noRecentDecisions')}
             description={t('startFirstDecision')}
             icon="clipboard-list"

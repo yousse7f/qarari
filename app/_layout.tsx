@@ -30,12 +30,11 @@ export default function RootLayout() {
 
   // 3. نقوم بتحميل الخطوط الجديدة هنا
   const [fontsLoaded] = useFonts({
-    // يمكنك الاحتفاظ بخط Inter إذا كنت لا تزال تحتاجه في مكان ما
     // 'Inter-Regular': Inter_400Regular,
     // 'Inter-Medium': Inter_500Medium,
     // 'Inter-Bold': Inter_700Bold,
 
-    // إضافة خطوط Cairo بأسماء سهلة الاستخدام
+    // إضافة خطوط Cairo   
     'Cairo-Light': Cairo_300Light,
     'Cairo-Regular': Cairo_400Regular,
     'Cairo-Medium': Cairo_500Medium,

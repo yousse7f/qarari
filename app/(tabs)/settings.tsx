@@ -32,7 +32,7 @@ export default function SettingsScreen() {
             <Switch
               value={isDark}
               onValueChange={toggleTheme}
-              trackColor={{ false: '#767577', true: theme.colors.primaryLight }}
+              trackColor={{ true: '#767577', false: theme.colors.primaryLight }}
               thumbColor={isDark ? theme.colors.primary : '#f4f3f4'}
             />
           </View>
@@ -46,23 +46,6 @@ export default function SettingsScreen() {
           ]}
         >
           <Pressable
-            onPress={() => setLanguage('en')}
-            style={({ pressed }) => [
-              styles.languageOption,
-              { opacity: pressed ? 0.7 : 1 }
-            ]}
-          >
-            <Text style={[styles.settingLabel, { color: theme.colors.text }]}>
-              {t('english')}
-            </Text>
-            {language === 'en' && (
-              <View style={[styles.activeDot, { backgroundColor: theme.colors.primary }]} />
-            )}
-          </Pressable>
-
-          <View style={[styles.languageDivider, { backgroundColor: theme.colors.border }]} />
-
-          <Pressable
             onPress={() => setLanguage('ar')}
             style={({ pressed }) => [
               styles.languageOption,
@@ -73,6 +56,24 @@ export default function SettingsScreen() {
               {t('arabic')}
             </Text>
             {language === 'ar' && (
+              <View style={[styles.activeDot, { backgroundColor: theme.colors.primary }]} />
+            )}
+          </Pressable>
+
+
+          <View style={[styles.languageDivider, { backgroundColor: theme.colors.border }]} />
+
+          <Pressable
+            onPress={() => setLanguage('en')}
+            style={({ pressed }) => [
+              styles.languageOption,
+              { opacity: pressed ? 0.7 : 1 }
+            ]}
+          >
+            <Text style={[styles.settingLabel, { color: theme.colors.text }]}>
+              {t('english')}
+            </Text>
+            {language === 'en' && (
               <View style={[styles.activeDot, { backgroundColor: theme.colors.primary }]} />
             )}
           </Pressable>

@@ -19,7 +19,7 @@ type ThemeColors = {
 };
 
 const lightColors: ThemeColors = {
-  primary: '#3B82F6',
+  primary: '#02796e',
   primaryLight: '#DBEAFE',
   secondary: '#0EA5E9',
   background: '#F8FAFC',
@@ -36,7 +36,7 @@ const lightColors: ThemeColors = {
 };
 
 const darkColors: ThemeColors = {
-  primary: '#60A5FA',
+  primary: '#4babdbf0',
   primaryLight: '#1E3A8A',
   secondary: '#0EA5E9',
   background: '#0F172A',

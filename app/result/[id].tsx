@@ -222,19 +222,52 @@ export default function ResultScreen() {
 
   const getWinnerMessage = () => {
     if (!decision || !decision.results.optionScores.length) return '';
-    const winner = decision.results.optionScores[0];
-    const runnerUp = decision.results.optionScores[1];
-    if (!runnerUp) {
+    const scores = decision.results.optionScores;
+    const winner = scores[0];
+    const winnerScore = winner.score;
+
+    // تحقق من تساوي جميع الخيارات
+    const allEqual = scores.every(opt => opt.score === winnerScore);
+
+    // تحقق من وجود بعض الخيارات المتساوية مع  (وليس جميعها)
+    const someEqual = scores.slice(1).some(opt => opt.score === winnerScore);
+
+    //  الخيارات متساوية
+    if (allEqual) {
+      return t('optionsEqual');
+    }
+
+    //  بعض الخيارات متساوية (وليس جميعها)
+    if (someEqual) {
+      return t('optionsSomeEqual');
+    }
+
+    // حساب الفارق بين الأول والثاني
+    const second = scores[1];
+    if (!second) {
+      // يوجد خيار واحد فقط
       return t('clearChoice').replace('{option}', winner.option.name);
     }
-    const scoreDifference = (winner.score - runnerUp.score).toFixed(1);
-    const percentageDifference = (((winner.score - runnerUp.score) / runnerUp.score) * 100).toFixed(0);
-    if (winner.score - runnerUp.score < 0.5) {
+    const diff = winnerScore - second.score;
+    const percent = second.score === 0 ? 100 : ((diff / second.score) * 100);
+
+    //  الفارق صغير جداً (مثلاً أقل من 1 نقطة أو أقل من 5%)
+    if (diff < 1 || percent < 5) {
       return t('narrowMargin').replace('{option}', winner.option.name);
-    } else if (winner.score - runnerUp.score < 2) {
-      return t('betterBy').replace('{option}', winner.option.name).replace('{points}', scoreDifference).replace('{percent}', percentageDifference);
-    } else {
-      return t('decisivelyBetter').replace('{option}', winner.option.name).replace('{points}', scoreDifference);
+    }
+
+    //  الفارق متوسط (مثلاً أقل من 3 نقاط أو أقل من 15%)
+    if (diff < 3 || percent < 15) {
+      return t('betterBy')
+        .replace('{option}', winner.option.name)
+        .replace('{points}', diff.toFixed(1))
+        .replace('{percent}', percent.toFixed(1));
+    }
+    if (diff > 3 || percent > 15) {
+      //  الفارق كبير (3 نقاط أو أكثر أو 15% أو أكثر)
+      return t('decisivelyBetter')
+        .replace('{option}', winner.option.name)
+        .replace('{points}', diff.toFixed(1));
     }
   };
 

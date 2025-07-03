@@ -68,13 +68,13 @@ export default function EditScreen() {
   };
 
   const updateOption = (id: string, name: string) => {
-    setOptions(options.map(option => 
+    setOptions(options.map(option =>
       option.id === id ? { ...option, name } : option
     ));
   };
 
   const updateCriterion = (id: string, name: string) => {
-    setCriteria(criteria.map(criterion => 
+    setCriteria(criteria.map(criterion =>
       criterion.id === id ? { ...criterion, name } : criterion
     ));
   };
@@ -115,19 +115,19 @@ export default function EditScreen() {
       Alert.alert(t('missingInformation'), t('enterTitle'));
       return false;
     }
-    
+
     const validOptions = options.filter(option => option.name.trim() !== '');
     if (validOptions.length < 2) {
       Alert.alert(t('missingInformation'), t('enterTwoOptions'));
       return false;
     }
-    
+
     const validCriteria = criteria.filter(criterion => criterion.name.trim() !== '');
     if (validCriteria.length < 1) {
       Alert.alert(t('missingInformation'), t('enterOneCriterion'));
       return false;
     }
-    
+
     // Check if all ratings are filled
     let allRatingsComplete = true;
     validOptions.forEach(option => {
@@ -137,27 +137,27 @@ export default function EditScreen() {
         }
       });
     });
-    
+
     if (!allRatingsComplete) {
       Alert.alert(t('incompleteRatings'), t('rateAllOptions'));
       return false;
     }
-    
+
     return true;
   };
 
   const handleSave = async () => {
     if (!decision || !validateForm()) return;
-    
+
     setIsSaving(true);
     try {
       // Filter options and criteria to remove any empty ones
       const validOptions = options.filter(option => option.name.trim() !== '');
       const validCriteria = criteria.filter(criterion => criterion.name.trim() !== '');
-      
+
       // Calculate new results
       const results = calculateResults(validOptions, validCriteria);
-      
+
       // Create updated decision object
       const updatedDecision: Decision = {
         ...decision,
@@ -167,10 +167,10 @@ export default function EditScreen() {
         criteria: validCriteria,
         results
       };
-      
+
       // Update decision
       await updateDecision(updatedDecision);
-      
+
       // Navigate back to results screen
       router.push(`/result/${decision.id}`);
     } catch (error) {
@@ -202,8 +202,8 @@ export default function EditScreen() {
           <Save size={20} color={theme.colors.primary} />
         </Pressable>
       </View>
-      
-      <ScrollView 
+
+      <ScrollView
         ref={scrollViewRef}
         style={styles.scrollView}
         contentContainerStyle={styles.scrollViewContent}
@@ -212,15 +212,15 @@ export default function EditScreen() {
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
             {t('decisionDetails')}
           </Text>
-          
+
           <View style={styles.inputGroup}>
             <Text style={[styles.label, { color: theme.colors.text }]}>
               {t('decisionTitle')} *
             </Text>
             <TextInput
               style={[
-                styles.input, 
-                { 
+                styles.input,
+                {
                   backgroundColor: theme.colors.card,
                   color: theme.colors.text,
                   borderColor: theme.colors.border
@@ -232,16 +232,16 @@ export default function EditScreen() {
               placeholderTextColor={theme.colors.textSecondary}
             />
           </View>
-          
+
           <View style={styles.inputGroup}>
             <Text style={[styles.label, { color: theme.colors.text }]}>
               {t('description')} ({t('optional')})
             </Text>
             <TextInput
               style={[
-                styles.input, 
+                styles.input,
                 styles.textArea,
-                { 
+                {
                   backgroundColor: theme.colors.card,
                   color: theme.colors.text,
                   borderColor: theme.colors.border
@@ -256,19 +256,19 @@ export default function EditScreen() {
             />
           </View>
         </Animated.View>
-        
+
         <Animated.View entering={FadeInDown.delay(100)} style={styles.section}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
             {t('optionsToCompare')}
           </Text>
-          
+
           {options.map((option, index) => (
             <View key={option.id} style={styles.optionRow}>
               <TextInput
                 style={[
-                  styles.input, 
+                  styles.input,
                   styles.optionInput,
-                  { 
+                  {
                     backgroundColor: theme.colors.card,
                     color: theme.colors.text,
                     borderColor: theme.colors.border
@@ -279,7 +279,7 @@ export default function EditScreen() {
                 placeholder={`${t('option')} ${index + 1}`}
                 placeholderTextColor={theme.colors.textSecondary}
               />
-              <Pressable 
+              <Pressable
                 onPress={() => removeOption(option.id)}
                 style={({ pressed }) => [
                   styles.iconButton,
@@ -290,7 +290,7 @@ export default function EditScreen() {
               </Pressable>
             </View>
           ))}
-          
+
           <Pressable
             onPress={addOption}
             style={({ pressed }) => [
@@ -307,20 +307,20 @@ export default function EditScreen() {
             </Text>
           </Pressable>
         </Animated.View>
-        
+
         <Animated.View entering={FadeInDown.delay(200)} style={styles.section}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
             {t('defineCriteria')}
           </Text>
-          
+
           {criteria.map((criterion, index) => (
             <View key={criterion.id} style={styles.criterionContainer}>
               <View style={styles.criterionRow}>
                 <TextInput
                   style={[
-                    styles.input, 
+                    styles.input,
                     styles.criterionInput,
-                    { 
+                    {
                       backgroundColor: theme.colors.card,
                       color: theme.colors.text,
                       borderColor: theme.colors.border
@@ -343,7 +343,7 @@ export default function EditScreen() {
               </View>
             </View>
           ))}
-          
+
           <Pressable
             onPress={addCriterion}
             style={({ pressed }) => [
@@ -360,18 +360,18 @@ export default function EditScreen() {
             </Text>
           </Pressable>
         </Animated.View>
-        
+
         <Animated.View entering={FadeInDown.delay(300)} style={styles.section}>
           <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
             {t('rateOptions')}
           </Text>
-          
+
           {criteria.map(criterion => (
             <View key={criterion.id} style={styles.ratingSection}>
               <Text style={[styles.criterionTitle, { color: theme.colors.text }]}>
                 {criterion.name}
               </Text>
-              
+
               {options.map(option => (
                 <View key={option.id} style={styles.ratingRow}>
                   <Text style={[styles.optionName, { color: theme.colors.text }]}>
@@ -386,7 +386,7 @@ export default function EditScreen() {
             </View>
           ))}
         </Animated.View>
-        
+
         <View style={styles.buttonContainer}>
           <Button
             title={t('cancel')}

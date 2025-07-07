@@ -1,6 +1,6 @@
-# PickWise
+# Qarari
 
-**PickWise** is a comprehensive decision-making app built with **React Native** and **Expo** that helps users make better choices through structured comparison and analysis.
+**Qarari** is a comprehensive decision-making app built with **React Native** and **Expo** that helps users make better choices through structured comparison and analysis.
 
 ## 🎯 Key Features
 
@@ -41,9 +41,9 @@ The app guides users through a **3-step process**:
 
 Perfect for important life decisions like job offers, major purchases, or any choice with multiple factors to consider.
 
-# 📦 Exporting PickWise for Android and iOS
+# 📦 Exporting Qarari for Android and iOS
 
-To export your **PickWise** app for Android and iOS, follow these steps:
+To export your **Qarari** app for Android and iOS, follow these steps:
 
 ## ✅ Prerequisites
 
@@ -120,5 +120,5 @@ npx expo eject
 -  iOS builds require an Apple Developer Account ($99/year)
 -  Android builds can be tested immediately with APK files
 -  EAS Build handles the complex native compilation process
--  PickWise uses Expo SDK 52, which is fully compatible with EAS Build
+-  Qarari uses Expo SDK 52, which is fully compatible with EAS Build
 -  Once builds are complete, they will be available in your Expo dashboard for download or distribution

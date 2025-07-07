@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, ScrollView, useWindowDimensions } from 'react-n
 import { useTheme } from '@/context/ThemeContext';
 import { Decision } from '@/types/decisions';
 import { calculatePercentage } from '@/utils/calculations';
+import { useLanguage } from '@/context/LanguageContext';
 
 const MIN_CELL_WIDTH = 120; // Minimum width for each cell
 
@@ -12,6 +13,7 @@ type ResultsTableProps = {
 
 const ResultsTable = ({ decision }: ResultsTableProps) => {
   const { theme } = useTheme();
+  const { t } = useLanguage();
   const { width: windowWidth } = useWindowDimensions();
   const { options, criteria, results } = decision;
 
@@ -50,7 +52,7 @@ const ResultsTable = ({ decision }: ResultsTableProps) => {
               { borderColor: theme.colors.border, width: cellWidth }
             ]}>
               <Text style={[styles.headerText, { color: theme.colors.textSecondary }]}>
-                المعايير
+                {t('standards')}
               </Text>
             </View>
           </View>
@@ -103,7 +105,7 @@ const ResultsTable = ({ decision }: ResultsTableProps) => {
               { borderColor: theme.colors.border, width: cellWidth }
             ]}>
               <Text style={[styles.totalLabel, { color: theme.colors.text }]}>
-                المجموع
+                {t('total')}
               </Text>
             </View>
           </View>

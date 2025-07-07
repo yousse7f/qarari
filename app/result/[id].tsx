@@ -8,6 +8,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Decision } from '@/types/decisions';
 import { loadDecision } from '@/utils/storage';
 import ResultsTable from '@/components/ResultsTable';
+import ResultReport from '@/components/ResultReport';
 import { formatDate } from '@/utils/helpers';
 import Button from '@/components/Button';
 import { ArrowLeft, Share2, Copy, Check, Printer } from 'lucide-react-native';
@@ -51,7 +52,7 @@ export default function ResultScreen() {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             margin: 20px; 
             color: #333;
-            direction: ${t('direction', 'ltr')}; /* يضبط اتجاه النص بناءً على اللغة */
+            direction: ${t('direction')}; /* يضبط اتجاه النص بناءً على اللغة */
           }
           .report-container { 
             border: 1px solid #eee; 
@@ -121,8 +122,30 @@ export default function ResultScreen() {
             <div class="winner-message">${getWinnerMessage()}</div>
           </div>
 
-          <h2>${t('detailedBreakdown', 'Detailed Breakdown')}</h2>
+          <h2>${t('detailedBreakdown')}</h2>
           <table>
+            <thead>
+              <tr>
+                <th>${t('criteria')}</th>
+                ${validOptions.map(option => `<th>${option.name}</th>`).join('')}
+              </tr>
+            </thead>
+            <tbody>
+              ${validCriteria.map(criterion => `
+                <tr>
+                  <td class="criteria-name">${criterion.name}</td>
+                  ${validOptions.map(option => `<td>${option.ratings[criterion.id] || '0'}</td>`).join('')}
+                </tr>
+              `).join('')}
+              <tr class="total-row">
+                <td>${t('total')}</td>
+                ${decision.results.optionScores.map(result => `<td>${result.score.toFixed(1)}</td>`).join('')}
+              </tr>
+            </tbody>
+          </table>
+
+           <h2>${t('reportbody')}</h2>
+          <div>
             <thead>
               <tr>
                 <th>${t('criteria', 'Criteria')}</th>
@@ -141,7 +164,7 @@ export default function ResultScreen() {
                 ${decision.results.optionScores.map(result => `<td>${result.score.toFixed(1)}</td>`).join('')}
               </tr>
             </tbody>
-          </table>
+          </div>
         </div>
       </body>
     </html>
@@ -239,7 +262,8 @@ export default function ResultScreen() {
 
     //  بعض الخيارات متساوية (وليس جميعها)
     if (someEqual) {
-      return t('optionsSomeEqual');
+      return t('optionsSomeEqual').replace('{option}', winner.option.name);
+
     }
 
     // حساب الفارق بين الأول والثاني
@@ -322,8 +346,8 @@ export default function ResultScreen() {
             <View style={styles.scoreContainer}>
               {decision.results.optionScores.slice(0, 3).map((result, index) => (
                 <View key={result.option.id} style={[styles.placementBadge, { backgroundColor: index === 0 ? theme.colors.successLight : theme.colors.background }]}>
-                  <Text style={[styles.placementText, { color: index === 0 ? theme.colors.success : theme.colors.primary }]}>{t(`place${index + 1}`)}</Text>
                   <Text style={[styles.placementOption, { color: index === 0 ? theme.colors.success : theme.colors.primary, fontFamily: index === 0 ? 'Inter-Bold' : 'Inter-Medium' }]}>{result.option.name}</Text>
+                  <Text style={[styles.placementText, { color: index === 0 ? theme.colors.success : theme.colors.primary }]}>{t(`place${index + 1}`)}</Text>
                   <Text style={[styles.placementScore, { color: index === 0 ? theme.colors.success : theme.colors.primary }]}>{result.score.toFixed(1)}</Text>
                 </View>
               ))}
@@ -333,6 +357,13 @@ export default function ResultScreen() {
           <View style={styles.tableContainer}>
             <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{t('detailedBreakdown')}</Text>
             <ResultsTable decision={decision} />
+          </View>
+
+          {/* report */}
+
+          <View style={styles.tableContainer}>
+            <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>{t('reportbody')}</Text>
+            <ResultReport decision={decision} />
           </View>
 
           <View style={styles.insightsContainer}>

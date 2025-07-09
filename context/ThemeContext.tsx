@@ -8,6 +8,7 @@ type ThemeColors = {
   secondary: string;
   background: string;
   card: string;
+  cardA: string;
   text: string;
   textSecondary: string;
   border: string;
@@ -25,6 +26,7 @@ const lightColors: ThemeColors = {
   secondary: '#0EA5E9',
   background: '#F8FAFC',
   card: '#FFFFFF',
+  cardA: '#c3e5d5',
   text: '#1E293B',
   textSecondary: '#64748B',
   border: '#E2E8F0',
@@ -42,6 +44,7 @@ const darkColors: ThemeColors = {
   secondary: '#0EA5E9',
   background: '#0F172A',
   card: '#1E293B',
+  cardA: '#1E293B',
   text: '#F1F5F9',
   textSecondary: '#94A3B8',
   border: '#334155',
@@ -92,6 +95,8 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   const theme = {
     dark: isDark,
+    // backgroundColor: '#c3e5d5',
+
     colors: isDark ? lightColors : darkColors,
   };
 

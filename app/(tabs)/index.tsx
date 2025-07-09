@@ -70,7 +70,7 @@ export default function HomeScreen() {
         style={[
           styles.createButtonContainer,
           {
-            backgroundColor: theme.colors.card,
+            backgroundColor: theme.colors.cardA,
             borderColor: theme.colors.border,
             transform: [{ scale: buttonAnim }]
           }

@@ -27,7 +27,7 @@ export default function TabLayout() {
         tabBarActiveTintColor: theme.colors.primary,
         tabBarInactiveTintColor: theme.colors.text,
         tabBarStyle: {
-          backgroundColor: theme.colors.card,
+          backgroundColor: theme.colors.cardA,
           borderTopColor: theme.colors.border,
           height: 60,
           direction: isRTL ? 'rtl' : 'ltr'
@@ -38,7 +38,7 @@ export default function TabLayout() {
           fontSize: 12,
         },
         headerStyle: {
-          backgroundColor: theme.colors.background,
+          backgroundColor: theme.colors.cardA,
         },
         headerTitleAlign: 'center',
         headerTitleStyle: {

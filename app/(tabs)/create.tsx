@@ -17,7 +17,7 @@ export default function CreateScreen() {
   const router = useRouter();
   const { t } = useLanguage();
   const scrollViewRef = useRef<ScrollView>(null);
-  
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [options, setOptions] = useState<Option[]>([
@@ -38,13 +38,13 @@ export default function CreateScreen() {
   };
 
   const updateOption = (id: string, name: string) => {
-    setOptions(options.map(option => 
+    setOptions(options.map(option =>
       option.id === id ? { ...option, name } : option
     ));
   };
 
   const updateCriterion = (id: string, name: string) => {
-    setCriteria(criteria.map(criterion => 
+    setCriteria(criteria.map(criterion =>
       criterion.id === id ? { ...criterion, name } : criterion
     ));
   };
@@ -85,13 +85,13 @@ export default function CreateScreen() {
       Alert.alert('Missing Information', 'Please enter a title for your decision');
       return false;
     }
-    
+
     const validOptions = options.filter(option => option.name.trim() !== '');
     if (validOptions.length < 2) {
       Alert.alert('Missing Information', 'Please enter at least two options');
       return false;
     }
-    
+
     return true;
   };
 
@@ -101,14 +101,14 @@ export default function CreateScreen() {
       Alert.alert('Missing Information', 'Please enter at least one criterion');
       return false;
     }
-    
+
     return true;
   };
 
   const nextStep = () => {
     if (currentStep === 1) {
       if (!validateStep1()) return;
-      
+
       // Filter out empty options
       setOptions(options.filter(option => option.name.trim() !== ''));
       setCurrentStep(2);
@@ -117,7 +117,7 @@ export default function CreateScreen() {
       }, 100);
     } else if (currentStep === 2) {
       if (!validateStep2()) return;
-      
+
       // Filter out empty criteria
       setCriteria(criteria.filter(criterion => criterion.name.trim() !== ''));
       setCurrentStep(3);
@@ -140,12 +140,12 @@ export default function CreateScreen() {
 
   const saveAndViewResults = async () => {
     setIsLoading(true);
-    
+
     try {
       // Filter options and criteria to remove any empty ones
       const validOptions = options.filter(option => option.name.trim() !== '');
       const validCriteria = criteria.filter(criterion => criterion.name.trim() !== '');
-      
+
       // Check if all ratings are filled
       let allRatingsComplete = true;
       validOptions.forEach(option => {
@@ -155,16 +155,16 @@ export default function CreateScreen() {
           }
         });
       });
-      
+
       if (!allRatingsComplete) {
         Alert.alert('Incomplete Ratings', 'Please rate all options for each criterion');
         setIsLoading(false);
         return;
       }
-      
+
       // Calculate results
       const results = calculateResults(validOptions, validCriteria);
-      
+
       // Create decision object
       const newDecision: Decision = {
         id: generateUniqueId(),
@@ -175,10 +175,10 @@ export default function CreateScreen() {
         results,
         createdAt: new Date().toISOString()
       };
-      
+
       // Save decision
       await saveDecision(newDecision);
-      
+
       // Navigate to results screen
       router.push(`/result/${newDecision.id}`);
     } catch (error) {
@@ -190,7 +190,7 @@ export default function CreateScreen() {
   };
 
   const renderStep1 = () => (
-    <Animated.View 
+    <Animated.View
       entering={FadeInDown}
       exiting={FadeOutUp}
       style={styles.stepContainer}
@@ -198,15 +198,15 @@ export default function CreateScreen() {
       <Text style={[styles.stepTitle, { color: theme.colors.text }]}>
         {t('defineDecision')}
       </Text>
-      
+
       <View style={styles.inputGroup}>
         <Text style={[styles.label, { color: theme.colors.text }]}>
           {t('decisionTitle')} *
         </Text>
         <TextInput
           style={[
-            styles.input, 
-            { 
+            styles.input,
+            {
               backgroundColor: theme.colors.card,
               color: theme.colors.text,
               borderColor: theme.colors.border
@@ -218,16 +218,16 @@ export default function CreateScreen() {
           placeholderTextColor={theme.colors.textSecondary}
         />
       </View>
-      
+
       <View style={styles.inputGroup}>
         <Text style={[styles.label, { color: theme.colors.text }]}>
           {t('description')} ({t('optional')})
         </Text>
         <TextInput
           style={[
-            styles.input, 
+            styles.input,
             styles.textArea,
-            { 
+            {
               backgroundColor: theme.colors.card,
               color: theme.colors.text,
               borderColor: theme.colors.border
@@ -241,7 +241,7 @@ export default function CreateScreen() {
           numberOfLines={4}
         />
       </View>
-      
+
       <View style={styles.inputGroup}>
         <Text style={[styles.label, { color: theme.colors.text }]}>
           {t('optionsToCompare')} *
@@ -249,14 +249,14 @@ export default function CreateScreen() {
         <Text style={[styles.sublabel, { color: theme.colors.textSecondary }]}>
           {t('addAtLeastTwo')}
         </Text>
-        
+
         {options.map((option, index) => (
           <View key={option.id} style={styles.optionRow}>
             <TextInput
               style={[
-                styles.input, 
+                styles.input,
                 styles.optionInput,
-                { 
+                {
                   backgroundColor: theme.colors.card,
                   color: theme.colors.text,
                   borderColor: theme.colors.border
@@ -267,7 +267,7 @@ export default function CreateScreen() {
               placeholder={`${t('option')} ${index + 1}`}
               placeholderTextColor={theme.colors.textSecondary}
             />
-            <Pressable 
+            <Pressable
               onPress={() => removeOption(option.id)}
               style={({ pressed }) => [
                 styles.iconButton,
@@ -278,7 +278,7 @@ export default function CreateScreen() {
             </Pressable>
           </View>
         ))}
-        
+
         <Pressable
           onPress={addOption}
           style={({ pressed }) => [
@@ -299,7 +299,7 @@ export default function CreateScreen() {
   );
 
   const renderStep2 = () => (
-    <Animated.View 
+    <Animated.View
       entering={FadeInDown}
       exiting={FadeOutUp}
       style={styles.stepContainer}
@@ -310,15 +310,15 @@ export default function CreateScreen() {
       <Text style={[styles.stepDescription, { color: theme.colors.textSecondary }]}>
         {t('rateDescription')}
       </Text>
-      
+
       {criteria.map((criterion, index) => (
         <View key={criterion.id} style={styles.criterionContainer}>
           <View style={styles.criterionRow}>
             <TextInput
               style={[
-                styles.input, 
+                styles.input,
                 styles.criterionInput,
-                { 
+                {
                   backgroundColor: theme.colors.card,
                   color: theme.colors.text,
                   borderColor: theme.colors.border
@@ -341,7 +341,7 @@ export default function CreateScreen() {
           </View>
         </View>
       ))}
-      
+
       <Pressable
         onPress={addCriterion}
         style={({ pressed }) => [
@@ -357,7 +357,7 @@ export default function CreateScreen() {
           {t('addCriterion')}
         </Text>
       </Pressable>
-      
+
       <Text style={[styles.hint, { color: theme.colors.textSecondary }]}>
         {t('ratingHint')}
       </Text>
@@ -367,9 +367,9 @@ export default function CreateScreen() {
   const renderStep3 = () => {
     const validOptions = options.filter(option => option.name.trim() !== '');
     const validCriteria = criteria.filter(criterion => criterion.name.trim() !== '');
-    
+
     return (
-      <Animated.View 
+      <Animated.View
         entering={FadeInDown}
         exiting={FadeOutUp}
         style={styles.stepContainer}
@@ -380,13 +380,13 @@ export default function CreateScreen() {
         <Text style={[styles.stepDescription, { color: theme.colors.textSecondary }]}>
           {t('rateDescription')}
         </Text>
-        
+
         {validCriteria.map(criterion => (
           <View key={criterion.id} style={styles.ratingSection}>
             <Text style={[styles.criterionTitle, { color: theme.colors.text }]}>
               {criterion.name}
             </Text>
-            
+
             {validOptions.map(option => (
               <View key={option.id} style={styles.ratingRow}>
                 <Text style={[styles.optionName, { color: theme.colors.text }]}>
@@ -400,7 +400,7 @@ export default function CreateScreen() {
             ))}
           </View>
         ))}
-        
+
         <Text style={[styles.hint, { color: theme.colors.textSecondary }]}>
           {t('ratingHint')}
         </Text>
@@ -410,8 +410,8 @@ export default function CreateScreen() {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
-      <ScrollView 
-        ref={scrollViewRef} 
+      <ScrollView
+        ref={scrollViewRef}
         style={styles.scrollView}
         contentContainerStyle={styles.scrollViewContent}
       >
@@ -420,7 +420,7 @@ export default function CreateScreen() {
             <View key={step} style={styles.stepDot}>
               {currentStep >= step ? (
                 <View style={[
-                  styles.activeDot, 
+                  styles.activeDot,
                   { backgroundColor: theme.colors.primary }
                 ]}>
                   {currentStep > step && (
@@ -429,8 +429,8 @@ export default function CreateScreen() {
                 </View>
               ) : (
                 <View style={[
-                  styles.inactiveDot, 
-                  { 
+                  styles.inactiveDot,
+                  {
                     backgroundColor: theme.colors.card,
                     borderColor: theme.colors.border
                   }
@@ -440,33 +440,41 @@ export default function CreateScreen() {
               )}
               {step < 3 && (
                 <View style={[
-                  styles.stepLine, 
+                  styles.stepLine,
                   { backgroundColor: currentStep > step ? theme.colors.primary : theme.colors.border }
                 ]} />
               )}
             </View>
           ))}
         </View>
-        
+
         {currentStep === 1 && renderStep1()}
         {currentStep === 2 && renderStep2()}
         {currentStep === 3 && renderStep3()}
-        
+
         <View style={styles.buttonContainer}>
           {currentStep > 1 && (
-            <Button 
+            <Button
               title={t('back')}
               onPress={prevStep}
               variant="outline"
               style={{ flex: 1, marginRight: 8 }}
             />
           )}
-          <Button 
+          <Button
             title={currentStep === 3 ? t('viewResults') : t('continue')}
             onPress={nextStep}
             isLoading={isLoading}
             style={currentStep === 1 ? { flex: 1 } : { flex: 2 }}
           />
+        </View>
+        <View style={styles.footer}>
+          <Text style={[styles.footerText, { color: theme.colors.textSecondary }]}>
+            {t('copyright')}
+          </Text>
+          <Text style={[styles.footerText, { color: theme.colors.textSecondary }]}>
+            {t('tagline')}
+          </Text>
         </View>
       </ScrollView>
     </View>
@@ -622,5 +630,14 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     marginTop: 16,
     textAlign: 'center',
+  },
+  footer: {
+    marginTop: 40,
+    alignItems: 'center',
+  },
+  footerText: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 12,
+    marginBottom: 4,
   },
 });

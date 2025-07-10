@@ -57,10 +57,10 @@ export default function HistoryScreen() {
   if (decisions.length === 0) {
     return (
       <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
-        <EmptyState 
+        <EmptyState
           title={t('noDecisionsFound')}
           description={t('noDecisionsDesc')}
-          icon="clipboard-list" 
+          icon="clipboard-list"
           actionLabel={t('startNewDecision')}
           onAction={() => router.push('/create')}
         />
@@ -81,8 +81,8 @@ export default function HistoryScreen() {
             { opacity: pressed ? 0.7 : 1 }
           ]}
         >
-          <Text 
-            style={{ 
+          <Text
+            style={{
               color: deleteMode ? theme.colors.error : theme.colors.primary,
               fontFamily: 'Inter-Medium'
             }}
@@ -93,9 +93,9 @@ export default function HistoryScreen() {
       </View>
 
       {deleteMode && (
-        <View 
+        <View
           style={[
-            styles.deleteWarning, 
+            styles.deleteWarning,
             { backgroundColor: theme.colors.errorLight, borderColor: theme.colors.error }
           ]}
         >
@@ -110,15 +110,23 @@ export default function HistoryScreen() {
         data={decisions}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <DecisionCard 
-            decision={item} 
+          <DecisionCard
+            decision={item}
             onPress={deleteMode ? () => handleDelete(item.id) : undefined}
-            deleteMode={deleteMode} 
+            deleteMode={deleteMode}
           />
         )}
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
       />
+      <View style={styles.footer}>
+        <Text style={[styles.footerText, { color: theme.colors.textSecondary }]}>
+          {t('copyright')}
+        </Text>
+        <Text style={[styles.footerText, { color: theme.colors.textSecondary }]}>
+          {t('tagline')}
+        </Text>
+      </View>
     </View>
   );
 }
@@ -161,5 +169,14 @@ const styles = StyleSheet.create({
   listContent: {
     gap: 12,
     paddingBottom: 20,
+  },
+  footer: {
+    marginTop: 40,
+    alignItems: 'center',
+  },
+  footerText: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 12,
+    marginBottom: 4,
   },
 });

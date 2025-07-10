@@ -148,6 +148,14 @@ export default function HomeScreen() {
           </Text>
         </View>
       </View>
+      <View style={styles.footer}>
+        <Text style={[styles.footerText, { color: theme.colors.textSecondary }]}>
+          {t('copyright')}
+        </Text>
+        <Text style={[styles.footerText, { color: theme.colors.textSecondary }]}>
+          {t('tagline')}
+        </Text>
+      </View>
     </ScrollView>
   );
 }
@@ -269,5 +277,14 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter-Regular',
     fontSize: 14,
     lineHeight: 20,
+  },
+  footer: {
+    marginTop: 40,
+    alignItems: 'center',
+  },
+  footerText: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 12,
+    marginBottom: 4,
   },
 });

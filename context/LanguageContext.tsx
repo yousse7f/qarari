@@ -130,7 +130,7 @@ const translations = {
     privacyPolicy: 'سياسة الخصوصية',
     termsOfService: 'شروط الخدمة',
     copyright: 'جميع الحقوق محفوظة © 2025  قراري',
-    tagline: 'د. يوسف الجابري',
+    tagline: 'د. يوسف بن هليل الجابري',
     privacyPolicyContent: 'في قراري، نأخذ خصوصيتك على محمل الجد. نحن نجمع ونخزن فقط البيانات الضرورية لعمل التطبيق. يتم تخزين قراراتك محليًا على جهازك ولا تتم مشاركتها مع أي طرف ثالث. نحن لا نتتبع استخدامك أو نجمع أي معلومات شخصية تتجاوز ما هو ضروري تمامًا لعمل التطبيق.\n\nنحن نستخدم إجراءات أمنية قياسية لحماية بياناتك، ولكن يرجى ملاحظة أنه لا توجد طريقة تخزين إلكترونية آمنة بنسبة 100٪. باستخدام قراري، فإنك تقر بأنك تفهم وتوافق على هذه الشروط.\n\nإذا كان لديك أي أسئلة حول ممارسات الخصوصية لدينا، يرجى الاتصال بنا.',
     termsOfServiceContent: 'باستخدام قراري، فإنك توافق على شروط الخدمة هذه. يتم تقديم التطبيق "كما هو" دون أي ضمانات، صريحة أو ضمنية. نحتفظ بالحق في تعديل أو إيقاف الخدمة في أي وقت.\n\nأنت مسؤول عن جميع القرارات التي تتخذها باستخدام التطبيق. قراري هو أداة لمساعدتك في تنظيم أفكارك ومقارنة الخيارات، لكن القرار النهائي هو دائمًا قرارك. نحن لسنا مسؤولين عن أي عواقب للقرارات المتخذة باستخدام التطبيق.\n\nأنت توافق على عدم استخدام التطبيق لأي أغراض غير قانونية أو بأي طريقة يمكن أن تضر أو تعطل أو تضعف الخدمة. نحتفظ بالحق في إنهاء وصولك إلى التطبيق إذا انتهكت هذه الشروط.',
 
@@ -263,7 +263,7 @@ const translations = {
     privacyPolicy: 'Privacy Policy',
     termsOfService: 'Terms of Service',
     copyright: 'All rights reserved © 2025 Qarari',
-    tagline: 'Dr. Youssef Al-Jabri',
+    tagline: 'Dr. Youssef Halil Al-Jabri',
     privacyPolicyContent: 'At qarari, we take your privacy seriously. We only collect and store the data necessary for the app to function. Your decisions are stored locally on your device and are not shared with any third parties. We do not track your usage or collect any personal information beyond what\'s strictly necessary for the app to work.\n\nWe use industry-standard security measures to protect your data, but please note that no method of electronic storage is 100% secure. By using qarari, you acknowledge that you understand and agree to these terms.\n\nIf you have any questions about our privacy practices, please contact us.',
     termsOfServiceContent: 'By using qarari, you agree to these Terms of Service. The app is provided \'as is\' without any warranties, express or implied. We reserve the right to modify or discontinue the service at any time.\n\nYou are responsible for all decisions made using the app. qarari is a tool to help you organize your thoughts and compare options, but the final decision is always yours. We are not liable for any consequences of decisions made using the app.\n\nYou agree not to use the app for any illegal purposes or in any way that could damage, disable, or impair the service. We reserve the right to terminate your access to the app if you violate these terms.',
 
